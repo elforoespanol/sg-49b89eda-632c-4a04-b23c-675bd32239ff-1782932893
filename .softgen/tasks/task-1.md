@@ -15,8 +15,8 @@ Build complete homepage for "Let's Master Spanish" educational blog following sp
 ## Checklist
 - [x] Set up design system in globals.css (convert hex → HSL, theme shadcn tokens)
 - [x] Register custom colors and fonts in tailwind.config.ts
-- [ ] Create Header component: sticky, 2-row (social icons + search top, logo + nav bottom)
-- [ ] Create Hero section: full-width lifestyle image, headline, subheadline, large CTA button
+- [x] Create Header component: sticky, 2-row (social icons + search top, logo + nav bottom)
+- [x] Create Hero section: full-width lifestyle image, headline, subheadline, large CTA button
 - [ ] Create ArticleCard component for Recent Articles feed (featured image, category tag, excerpt)
 - [ ] Create Sidebar component: About widget, Popular Lessons list, Newsletter opt-in box
 - [ ] Create FeaturedGrid: 3-card horizontal layout (Beginner Path, Verb Conjugation, Travel Phrases)
