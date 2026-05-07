@@ -17,14 +17,14 @@ Build complete homepage for "Let's Master Spanish" educational blog following sp
 - [x] Register custom colors and fonts in tailwind.config.ts
 - [x] Create Header component: sticky, 2-row (social icons + search top, logo + nav bottom)
 - [x] Create Hero section: full-width lifestyle image, headline, subheadline, large CTA button
-- [ ] Create ArticleCard component for Recent Articles feed (featured image, category tag, excerpt)
-- [ ] Create Sidebar component: About widget, Popular Lessons list, Newsletter opt-in box
-- [ ] Create FeaturedGrid: 3-card horizontal layout (Beginner Path, Verb Conjugation, Travel Phrases)
-- [ ] Create TestimonialsSlider component with user success stories
-- [ ] Create Footer: 3-column layout (mission, quick links, social buttons)
-- [ ] Add floating announcement bar in Golden Yellow
-- [ ] Implement mobile responsiveness across all sections
-- [ ] Add lazy-loading for images, SEO-friendly heading hierarchy
+- [x] Create ArticleCard component for Recent Articles feed (featured image, category tag, excerpt)
+- [x] Create Sidebar component: About widget, Popular Lessons list, Newsletter opt-in box
+- [x] Create FeaturedGrid: 3-card horizontal layout (Beginner Path, Verb Conjugation, Travel Phrases)
+- [x] Create TestimonialsSlider component with user success stories
+- [x] Create Footer: 3-column layout (mission, quick links, social buttons)
+- [x] Add floating announcement bar in Golden Yellow
+- [x] Implement mobile responsiveness across all sections
+- [x] Add lazy-loading for images, SEO-friendly heading hierarchy
 
 ## Acceptance
 - Homepage displays full layout with header, hero, 2-column body, featured grid, testimonials, footer

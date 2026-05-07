@@ -20,13 +20,14 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* Right: Hero image placeholder - will replace with actual image */}
+          {/* Right: Hero image */}
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              <p className="text-foreground/40 text-center px-8">
-                [Lifestyle image: People conversing in Spain]
-              </p>
-            </div>
+            <img 
+              src="/generated/hero-spanish-conversation.png" 
+              alt="People conversing in Spanish at a vibrant outdoor café"
+              loading="eager"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
