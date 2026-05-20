@@ -1,6 +1,6 @@
 ---
 title: Blog Post Management System
-status: in_progress
+status: done
 priority: high
 type: feature
 tags: [blog, cms, admin, database]
