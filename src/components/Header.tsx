@@ -42,24 +42,21 @@ export function Header() {
             Let's Master <span className="text-primary">Spanish</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
+          <nav className="hidden lg:flex items-center gap-6">
+            <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
               Home
             </Link>
-            <Link href="/spanish-basics" className="text-foreground hover:text-primary transition-colors font-medium">
-              Spanish Basics
+            <Link href="/learn-spanish" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+              Learn Spanish
             </Link>
-            <Link href="/grammar" className="text-foreground hover:text-primary transition-colors font-medium">
-              Grammar
+            <Link href="/spanish-for-beginners" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+              Spanish for Beginners
             </Link>
-            <Link href="/vocabulary" className="text-foreground hover:text-primary transition-colors font-medium">
-              Vocabulary
+            <Link href="/spanish-learning-tips" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+              Spanish Learning Tips
             </Link>
-            <Link href="/reviews" className="text-foreground hover:text-primary transition-colors font-medium">
-              Reviews
-            </Link>
-            <Link href="/about" className="text-foreground hover:text-primary transition-colors font-medium">
-              About
+            <Link href="/spanish-language-courses" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+              Courses & Apps
             </Link>
           </nav>
 
