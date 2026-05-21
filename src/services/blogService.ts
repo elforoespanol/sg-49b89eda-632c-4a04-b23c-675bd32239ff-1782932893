@@ -20,6 +20,16 @@ export const blogService = {
     return data || [];
   },
 
+  async getAllPosts() {
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select(`*, categories(name, slug)`)
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  },
+
   async getPostsByCategory(categoryId: string) {
     const { data, error } = await supabase
       .from("blog_posts")
