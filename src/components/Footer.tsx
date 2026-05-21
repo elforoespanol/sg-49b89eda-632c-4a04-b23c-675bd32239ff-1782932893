@@ -75,13 +75,13 @@ export function Footer() {
         </div>
 
         {/* Centered bottom section with copyright and Network widget */}
-        <div className="mt-12 pt-8 border-t border-background/20 flex flex-col items-center text-center gap-6">
-          <p className="text-sm text-background/60">
+        <div className="mt-12 pt-8 border-t border-background/20 flex flex-col items-center gap-6">
+          <p className="text-sm text-background/60 text-center">
             © {new Date().getFullYear()} letsmasterspanish.com is a proud member of the Academia Español Language Network. All rights reserved.
           </p>
 
           {/* Academia del Español Network Widget */}
-          <div className="bg-[#fcf9f2] border border-[#eef2f6] rounded-2xl p-6 w-full shadow-md text-left">
+          <div className="bg-[#fcf9f2] border border-[#eef2f6] rounded-2xl p-6 w-full max-w-7xl shadow-md text-left">
             <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-primary mb-2">
               Network Property
             </span>
