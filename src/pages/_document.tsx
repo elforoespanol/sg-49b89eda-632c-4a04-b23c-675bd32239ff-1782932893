@@ -6,7 +6,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
+        <link rel="icon" href="/logo.jpg" />
+        <link rel="apple-touch-icon" href="/logo.jpg" />
         <SEOElements />
         {/*
           CRITICAL: DO NOT REMOVE THIS SCRIPT
