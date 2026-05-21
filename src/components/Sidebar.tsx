@@ -23,9 +23,12 @@ export function Sidebar() {
           
           <div>
             <h3 className="font-bold text-lg font-heading text-foreground">About the Instructor</h3>
-            <p className="text-sm text-foreground/70 mt-2 leading-relaxed">
-              Native Spanish speaker with 10+ years teaching experience. Passionate about making Spanish accessible to everyone.
-            </p>
+            <div className="text-sm text-foreground/70 mt-2 leading-relaxed space-y-1">
+              <p>Start real learning, see clear progress</p>
+              <p>Flexibility: No subscriptions. Choose your own schedule</p>
+              <p>Tired of app learning? Speak with a native teacher</p>
+              <p>A wide variety of tutors for all levels and learning styles</p>
+            </div>
           </div>
         </div>
       </Card>
