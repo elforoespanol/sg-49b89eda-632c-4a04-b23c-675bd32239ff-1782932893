@@ -43,9 +43,6 @@ export function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">
-            <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
-              Home
-            </Link>
             <Link href="/learn-spanish" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
               Learn Spanish
             </Link>
@@ -59,10 +56,6 @@ export function Header() {
               Courses & Apps
             </Link>
           </nav>
-
-          <Button variant="default" size="sm" className="hidden md:inline-flex">
-            Get Started
-          </Button>
         </div>
       </div>
     </header>
