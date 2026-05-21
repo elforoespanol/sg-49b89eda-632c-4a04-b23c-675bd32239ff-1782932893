@@ -13,8 +13,8 @@ export function Footer() {
               Let's Master Spanish is dedicated to empowering adult learners with proven strategies, 
               high-quality lessons, and a supportive community to achieve Spanish fluency.
             </p>
-            <p className="text-sm text-background/60">
-              © {new Date().getFullYear()} Let's Master Spanish. All rights reserved.
+            <p className="text-sm text-background/60 mt-4">
+              © {new Date().getFullYear()} letsmasterspanish.com is a proud member of the Academia Español Language Network. All rights reserved.
             </p>
 
             {/* Academia del Español Network Widget */}
