@@ -81,7 +81,7 @@ export function Footer() {
           </p>
 
           {/* Academia del Español Network Widget */}
-          <div className="bg-[#fcf9f2] border border-[#eef2f6] rounded-2xl p-6 max-w-3xl shadow-md text-left">
+          <div className="bg-[#fcf9f2] border border-[#eef2f6] rounded-2xl p-6 w-full shadow-md text-left">
             <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-primary mb-2">
               Network Property
             </span>
