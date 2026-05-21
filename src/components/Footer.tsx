@@ -16,6 +16,27 @@ export function Footer() {
             <p className="text-sm text-background/60">
               © {new Date().getFullYear()} Let's Master Spanish. All rights reserved.
             </p>
+
+            {/* Academia del Español Network Widget */}
+            <div className="mt-6 bg-[#fcf9f2] border border-[#eef2f6] rounded-2xl p-6 max-w-xs shadow-md text-left">
+              <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-primary mb-2">
+                Network Property
+              </span>
+              <h4 className="font-serif text-lg font-bold text-[#1e3a8a] leading-tight mb-3 mt-0">
+                Let's Master Spanish
+              </h4>
+              <p className="text-[13px] leading-relaxed text-[#4a5568] mb-4 mt-0">
+                This publication operates as a proud, free media division of the <strong className="text-[#1e3a8a]">Academia del Español Language Network</strong>. We deliver continuous, real-time linguistic immersion to complement your path to fluency.
+              </p>
+              <a 
+                href="https://academiadelespanol.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block text-[12px] font-bold text-[#1e3a8a] no-underline border-b-2 border-primary pb-0.5 transition-colors hover:opacity-80"
+              >
+                Visit the Parent Hub ↗
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
