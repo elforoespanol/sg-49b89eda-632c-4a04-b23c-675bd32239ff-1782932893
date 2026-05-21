@@ -9,6 +9,7 @@ export function Sidebar() {
     { title: "Master the Present Tense", thumbnail: "/generated/lesson-present-tense.png" },
     { title: "Essential Travel Phrases", thumbnail: "/generated/lesson-travel.png" },
     { title: "Common Spanish Mistakes", thumbnail: "/generated/lesson-mistakes.png" },
+    { title: "Past Tense Explained Simply", thumbnail: "/generated/lesson-past-tense.png" },
   ];
 
   return (
@@ -29,9 +30,9 @@ export function Sidebar() {
         </div>
       </Card>
 
-      {/* Popular Lessons */}
+      {/* Popular Posts */}
       <Card className="p-6 border-border">
-        <h3 className="font-bold text-lg font-heading text-foreground mb-4">Popular Lessons</h3>
+        <h3 className="font-bold text-lg font-heading text-foreground mb-4">Popular Posts</h3>
         <div className="space-y-3">
           {popularLessons.map((lesson, idx) => (
             <a 
