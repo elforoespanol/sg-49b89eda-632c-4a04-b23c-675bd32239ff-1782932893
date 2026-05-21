@@ -8,35 +8,39 @@ type Category = Database["public"]["Tables"]["categories"]["Row"];
 
 export const blogService = {
   // Get all published blog posts for homepage
-  async getPublishedPosts(limit = 6) {
+  async getPublishedPosts(limit: number = 10) {
     const { data, error } = await supabase
       .from("blog_posts")
-      .select(`
-        *,
-        categories!blog_posts_category_id_fkey(name, slug)
-      `)
+      .select(`*, categories(name, slug)`)
       .eq("status", "published")
       .order("published_at", { ascending: false })
       .limit(limit);
 
-    console.log("getPublishedPosts:", { data, error });
     if (error) throw error;
     return data || [];
   },
 
-  // Get all posts (admin only)
-  async getAllPosts() {
+  async getPostsByCategory(categoryId: string) {
     const { data, error } = await supabase
       .from("blog_posts")
-      .select(`
-        *,
-        categories!blog_posts_category_id_fkey(name, slug)
-      `)
-      .order("created_at", { ascending: false });
+      .select(`*, categories(name, slug)`)
+      .eq("category_id", categoryId)
+      .eq("status", "published")
+      .order("published_at", { ascending: false });
 
-    console.log("getAllPosts:", { data, error });
     if (error) throw error;
     return data || [];
+  },
+
+  async getCategoryBySlug(slug: string) {
+    const { data, error } = await supabase
+      .from("categories")
+      .select("*")
+      .eq("slug", slug)
+      .single();
+
+    if (error) return null;
+    return data;
   },
 
   // Get single post by slug

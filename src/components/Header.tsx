@@ -43,16 +43,16 @@ export function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">
-            <Link href="/learn-spanish" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+            <Link href="/categories/learn-spanish" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
               Learn Spanish
             </Link>
-            <Link href="/spanish-for-beginners" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+            <Link href="/categories/spanish-for-beginners" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
               Spanish for Beginners
             </Link>
-            <Link href="/spanish-learning-tips" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+            <Link href="/categories/spanish-learning-tips" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
               Spanish Learning Tips
             </Link>
-            <Link href="/spanish-language-courses" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
+            <Link href="/categories/spanish-language-courses" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
               Courses & Apps
             </Link>
           </nav>
