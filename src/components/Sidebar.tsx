@@ -16,9 +16,9 @@ export function Sidebar() {
       {/* About Widget */}
       <Card className="p-6 border-border">
         <div className="text-center space-y-4">
-          <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-            <span className="text-3xl">👨‍🏫</span>
-          </div>
+          <a href="https://www.italki.com/en/affshare?ref=af23205158" target="_blank" rel="noopener noreferrer" className="block group">
+            <img src="/italki-banner.jpg" alt="About the Instructor" className="w-24 h-24 mx-auto rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary transition-all" />
+          </a>
           
           <div>
             <h3 className="font-bold text-lg font-heading text-foreground">About the Instructor</h3>
