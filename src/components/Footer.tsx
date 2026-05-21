@@ -39,30 +39,18 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Legal */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold font-heading mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold font-heading mb-4">Legal</h3>
             <nav className="flex flex-col gap-3">
-              <Link href="/spanish-basics" className="text-background/80 hover:text-background transition-colors">
-                Spanish Basics
+              <Link href="/privacy-gdpr" className="text-background/80 hover:text-background transition-colors">
+                Privacy & GDPR Policy
               </Link>
-              <Link href="/grammar" className="text-background/80 hover:text-background transition-colors">
-                Grammar
+              <Link href="/terms-of-business" className="text-background/80 hover:text-background transition-colors">
+                Terms of Business
               </Link>
-              <Link href="/vocabulary" className="text-background/80 hover:text-background transition-colors">
-                Vocabulary
-              </Link>
-              <Link href="/about" className="text-background/80 hover:text-background transition-colors">
-                About
-              </Link>
-              <Link href="/privacy" className="text-background/80 hover:text-background transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/contact" className="text-background/80 hover:text-background transition-colors">
-                Contact
-              </Link>
-              <Link href="/sitemap" className="text-background/80 hover:text-background transition-colors">
-                Sitemap
+              <Link href="/disclosure-policy" className="text-background/80 hover:text-background transition-colors">
+                Disclosure Policy
               </Link>
             </nav>
           </div>
