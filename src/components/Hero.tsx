@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -15,9 +16,11 @@ export function Hero() {
               Proven strategies and resources to take you from beginner to fluent.
             </p>
 
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold">
-              Start Learning Now
-            </Button>
+            <Link href="https://learnspanishlikeidid.com" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold">
+                Start Learning Now
+              </Button>
+            </Link>
           </div>
 
           {/* Right: Hero image */}
