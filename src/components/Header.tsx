@@ -28,7 +28,7 @@ export function Header() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
             <Input 
               type="search" 
-              placeholder="Search lessons..." 
+              placeholder="Search Posts...." 
               className="pl-9 bg-background border-border"
             />
           </div>
