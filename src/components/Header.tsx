@@ -23,7 +23,7 @@ export function Header() {
       <div className="bg-background">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-4 group">
-            <img src="/logo.jpg" alt="Let's Master Spanish Logo" className="h-28 w-auto" />
+            <img src="/logo.jpg" alt="Let's Master Spanish Logo" className="h-32 w-auto" />
             <span className="text-2xl font-bold text-foreground font-heading">
               Let's Master <span className="text-primary">Spanish</span>
             </span>
