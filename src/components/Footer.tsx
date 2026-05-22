@@ -28,6 +28,9 @@ export function Footer() {
               <Link href="/disclosure-policy" className="text-background/80 hover:text-background transition-colors">
                 Disclosure Policy
               </Link>
+              <Link href="/cookie-consent-policy" className="text-background/80 hover:text-background transition-colors">
+                Cookie & Consent Policy
+              </Link>
             </nav>
           </div>
 
