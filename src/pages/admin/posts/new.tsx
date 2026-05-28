@@ -18,10 +18,13 @@ type Category = Database["public"]["Tables"]["categories"]["Row"];
 
 export default function CreateNewBlogPost() {
   const router = useRouter();
+  const { edit } = router.query;
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [imageUploading, setImageUploading] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [editMode, setEditMode] = useState(false);
+  const [postId, setPostId] = useState<string | null>(null);
   
   const [formData, setFormData] = useState({
     title: "",
@@ -40,6 +43,14 @@ export default function CreateNewBlogPost() {
     loadCategories();
   }, []);
 
+  useEffect(() => {
+    if (edit && typeof edit === "string") {
+      setEditMode(true);
+      setPostId(edit);
+      loadPost(edit);
+    }
+  }, [edit]);
+
   async function checkAuth() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -55,6 +66,35 @@ export default function CreateNewBlogPost() {
       setCategories(data);
     } catch (error) {
       console.error("Error loading categories:", error);
+    }
+  }
+
+  async function loadPost(id: string) {
+    try {
+      const { data, error } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error) throw error;
+
+      if (data) {
+        setFormData({
+          title: data.title,
+          slug: data.slug,
+          content: data.content,
+          excerpt: data.excerpt || "",
+          featured_image: data.featured_image || "",
+          category_id: data.category_id || "",
+          tags: Array.isArray(data.tags) ? data.tags.join(", ") : "",
+          meta_description: data.meta_description || "",
+          status: data.status as "draft" | "published",
+        });
+      }
+    } catch (error) {
+      console.error("Error loading post:", error);
+      alert("Failed to load post");
     }
   }
 
@@ -95,11 +135,18 @@ export default function CreateNewBlogPost() {
         published_at: status === "published" ? new Date().toISOString() : null,
       };
 
-      await blogService.createPost(postData);
+      if (editMode && postId) {
+        // Update existing post
+        await blogService.updatePost(postId, postData);
+      } else {
+        // Create new post
+        await blogService.createPost(postData);
+      }
+      
       router.push("/admin");
     } catch (error) {
-      console.error("Error creating post:", error);
-      alert("Failed to create post");
+      console.error(`Error ${editMode ? 'updating' : 'creating'} post:`, error);
+      alert(`Failed to ${editMode ? 'update' : 'create'} post`);
     } finally {
       setLoading(false);
     }
@@ -110,8 +157,8 @@ export default function CreateNewBlogPost() {
   return (
     <>
       <SEO 
-        title="Create New Blog Post - Let's Master Spanish"
-        description="Create a new blog post"
+        title={`${editMode ? 'Edit' : 'Create New'} Blog Post - Let's Master Spanish`}
+        description={editMode ? "Edit blog post" : "Create a new blog post"}
       />
       
       <div className="min-h-screen flex flex-col bg-background">
@@ -128,10 +175,10 @@ export default function CreateNewBlogPost() {
             </Link>
             
             <h1 className="text-4xl font-bold text-foreground font-heading mb-2">
-              Create New Blog Post
+              {editMode ? 'Edit Blog Post' : 'Create New Blog Post'}
             </h1>
             <p className="text-muted-foreground">
-              Fill in the details below to create a new blog post
+              {editMode ? 'Update the details below to edit the blog post' : 'Fill in the details below to create a new blog post'}
             </p>
           </div>
 
@@ -299,7 +346,7 @@ export default function CreateNewBlogPost() {
                   className="bg-primary hover:bg-primary/90"
                 >
                   <Upload className="mr-2 h-4 w-4" />
-                  Publish Now
+                  {editMode ? 'Update Post' : 'Publish Now'}
                 </Button>
               </div>
             </Card>
