@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { blogService } from "@/services/blogService";
-import { Calendar, Eye, User } from "lucide-react";
+import { authService } from "@/services/authService";
+import { Calendar, Eye, User, Edit } from "lucide-react";
 import type { Database } from "@/integrations/supabase/types";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
@@ -17,12 +20,19 @@ export default function BlogPostPage() {
   const { slug } = router.query;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     if (slug && typeof slug === "string") {
       loadPost(slug);
     }
+    checkAdminStatus();
   }, [slug]);
+
+  async function checkAdminStatus() {
+    const adminStatus = await authService.isAdmin();
+    setIsAdmin(adminStatus);
+  }
 
   async function loadPost(slug: string) {
     try {
@@ -87,6 +97,18 @@ export default function BlogPostPage() {
         <Header />
         
         <article className="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
+          {/* Admin Edit Button */}
+          {isAdmin && (
+            <div className="mb-6">
+              <Link href={`/admin/posts/new?edit=${post.id}`}>
+                <Button size="sm" variant="secondary" className="gap-2">
+                  <Edit className="h-4 w-4" />
+                  Edit Post
+                </Button>
+              </Link>
+            </div>
+          )}
+
           {/* Post Header */}
           <header className="mb-8">
             {post.categories && (
