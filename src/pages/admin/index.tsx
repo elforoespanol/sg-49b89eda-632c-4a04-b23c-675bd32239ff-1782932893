@@ -136,7 +136,12 @@ export default function AdminDashboard() {
                         </div>
                         
                         <div className="flex gap-2">
-                          <Link href={`/admin/posts/edit/${post.id}`}>
+                          <Link 
+                            href={{
+                              pathname: "/admin/posts/new",
+                              query: { edit: post.id }
+                            }}
+                          >
                             <Button variant="outline" size="sm">
                               <Edit className="h-4 w-4" />
                             </Button>
