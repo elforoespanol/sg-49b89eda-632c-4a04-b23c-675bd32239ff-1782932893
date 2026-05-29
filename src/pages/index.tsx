@@ -64,6 +64,7 @@ export default function Home() {
                   {posts.map((post) => (
                     <ArticleCard
                       key={post.id}
+                      postId={post.id}
                       title={post.title}
                       excerpt={post.excerpt || post.content.substring(0, 200) + "..."}
                       category={post.categories?.name || "Uncategorized"}
