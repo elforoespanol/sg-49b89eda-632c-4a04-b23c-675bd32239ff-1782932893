@@ -72,7 +72,13 @@ export function ArticleCard({ title, excerpt, category, image, date, slug, postI
 
       {/* Admin Edit Button */}
       {isAdmin && postId && (
-        <Link href={`/admin/posts/new?edit=${postId}`} className="absolute top-4 right-4 z-10">
+        <Link 
+          href={{
+            pathname: "/admin/posts/new",
+            query: { edit: postId }
+          }}
+          className="absolute top-4 right-4 z-10"
+        >
           <Button size="sm" variant="secondary" className="gap-2">
             <Edit className="h-4 w-4" />
             Edit

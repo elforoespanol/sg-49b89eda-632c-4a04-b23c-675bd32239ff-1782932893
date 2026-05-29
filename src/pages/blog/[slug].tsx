@@ -100,7 +100,12 @@ export default function BlogPostPage() {
           {/* Admin Edit Button */}
           {isAdmin && (
             <div className="mb-6">
-              <Link href={`/admin/posts/new?edit=${post.id}`}>
+              <Link 
+                href={{
+                  pathname: "/admin/posts/new",
+                  query: { edit: post.id }
+                }}
+              >
                 <Button size="sm" variant="secondary" className="gap-2">
                   <Edit className="h-4 w-4" />
                   Edit Post
