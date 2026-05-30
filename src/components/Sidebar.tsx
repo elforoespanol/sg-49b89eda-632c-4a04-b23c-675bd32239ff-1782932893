@@ -11,7 +11,7 @@ export function SidebarWidgets() {
         <div className="grid lg:grid-cols-[1fr_400px] gap-12">
           {/* Popular Lessons */}
           <div>
-            <h2 className="text-3xl font-bold text-foreground font-heading mb-8">Popular Lessons</h2>
+            <h2 className="text-3xl font-bold text-foreground font-heading mb-8">Popular Posts</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <Link href="/blog/spain-vs-latin-american-spanish" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
                 <img 
@@ -74,6 +74,19 @@ export function SidebarWidgets() {
                 <div>
                   <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
                     Learn Spanish: Tips and Tricks
+                  </h4>
+                </div>
+              </Link>
+
+              <Link href="/blog/meet-langua-the-worlds-best-ai-platform-for-language-learning" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <img 
+                  src="/generated/hero-spanish-conversation.png" 
+                  alt="Meet Langua, the world's best AI platform for language learning"
+                  className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
+                />
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                    Meet Langua™, the world's best AI platform for language learning
                   </h4>
                 </div>
               </Link>
