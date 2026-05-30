@@ -6,7 +6,6 @@ import { Hero } from "@/components/Hero";
 import { FeaturedGrid } from "@/components/FeaturedGrid";
 import { ArticleCard } from "@/components/ArticleCard";
 import { SidebarWidgets } from "@/components/Sidebar";
-import { TestimonialsSlider } from "@/components/TestimonialsSlider";
 import { Footer } from "@/components/Footer";
 import { blogService } from "@/services/blogService";
 import type { Database } from "@/integrations/supabase/types";
@@ -78,7 +77,6 @@ export default function Home() {
         </main>
 
         <SidebarWidgets />
-        <TestimonialsSlider />
         <Footer />
       </div>
     </>
