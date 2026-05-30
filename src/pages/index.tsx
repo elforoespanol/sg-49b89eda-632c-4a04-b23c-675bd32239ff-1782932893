@@ -5,12 +5,11 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { FeaturedGrid } from "@/components/FeaturedGrid";
 import { ArticleCard } from "@/components/ArticleCard";
-import { Sidebar } from "@/components/Sidebar";
+import { SidebarWidgets } from "@/components/Sidebar";
 import { TestimonialsSlider } from "@/components/TestimonialsSlider";
 import { Footer } from "@/components/Footer";
 import { blogService } from "@/services/blogService";
 import type { Database } from "@/integrations/supabase/types";
-import { SidebarWidgets } from "@/components/Sidebar";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
   categories: { name: string; slug: string } | null;
