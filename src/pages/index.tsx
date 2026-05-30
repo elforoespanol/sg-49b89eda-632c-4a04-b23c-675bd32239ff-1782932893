@@ -25,7 +25,7 @@ export default function Home() {
 
   async function loadPosts() {
     try {
-      const data = await blogService.getPublishedPosts(6);
+      const data = await blogService.getPublishedPosts(8);
       setPosts(data);
     } catch (error) {
       console.error("Error loading posts:", error);
@@ -60,7 +60,7 @@ export default function Home() {
               ) : posts.length === 0 ? (
                 <p className="text-muted-foreground">No articles published yet.</p>
               ) : (
-                <div className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
                   {posts.map((post) => (
                     <ArticleCard
                       key={post.id}
