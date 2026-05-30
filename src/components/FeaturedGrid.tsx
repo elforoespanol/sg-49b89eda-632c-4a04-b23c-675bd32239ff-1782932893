@@ -26,7 +26,7 @@ export function FeaturedGrid() {
             </p>
             
             <Link href="https://learnspanishlikeidid.com" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="w-full">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
                 Explore Now
               </Button>
             </Link>
@@ -47,7 +47,7 @@ export function FeaturedGrid() {
             </p>
             
             <Link href="https://learnspanishlikeidid.com" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="w-full">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
                 Explore Now
               </Button>
             </Link>
@@ -68,7 +68,7 @@ export function FeaturedGrid() {
             </p>
             
             <Link href="https://learnspanishlikeidid.com" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="w-full">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
                 Explore Now
               </Button>
             </Link>
