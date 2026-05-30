@@ -10,6 +10,7 @@ import { TestimonialsSlider } from "@/components/TestimonialsSlider";
 import { Footer } from "@/components/Footer";
 import { blogService } from "@/services/blogService";
 import type { Database } from "@/integrations/supabase/types";
+import { SidebarWidgets } from "@/components/Sidebar";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
   categories: { name: string; slug: string } | null;
@@ -48,40 +49,36 @@ export default function Home() {
         <FeaturedGrid />
         
         <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
-          <div className="grid lg:grid-cols-[1fr_350px] gap-12">
-            {/* Recent Articles (70%) */}
-            <div>
-              <h2 className="text-3xl font-bold text-foreground font-heading mb-8">
-                Recent Articles
-              </h2>
-              
-              {loading ? (
-                <p className="text-muted-foreground">Loading articles...</p>
-              ) : posts.length === 0 ? (
-                <p className="text-muted-foreground">No articles published yet.</p>
-              ) : (
-                <div className="grid md:grid-cols-2 gap-8">
-                  {posts.map((post) => (
-                    <ArticleCard
-                      key={post.id}
-                      postId={post.id}
-                      title={post.title}
-                      excerpt={post.excerpt || post.content.substring(0, 200) + "..."}
-                      category={post.categories?.name || "Uncategorized"}
-                      image={post.featured_image || "/generated/hero-spanish-conversation.png"}
-                      date={post.published_at ? new Date(post.published_at).toLocaleDateString() : new Date(post.created_at).toLocaleDateString()}
-                      slug={`/blog/${post.slug}`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Sidebar (30%) */}
-            <Sidebar />
+          {/* Recent Articles - Full Width */}
+          <div>
+            <h2 className="text-3xl font-bold text-foreground font-heading mb-8">
+              Recent Articles
+            </h2>
+            
+            {loading ? (
+              <p className="text-muted-foreground">Loading articles...</p>
+            ) : posts.length === 0 ? (
+              <p className="text-muted-foreground">No articles published yet.</p>
+            ) : (
+              <div className="grid md:grid-cols-2 gap-8">
+                {posts.map((post) => (
+                  <ArticleCard
+                    key={post.id}
+                    postId={post.id}
+                    title={post.title}
+                    excerpt={post.excerpt || post.content.substring(0, 200) + "..."}
+                    category={post.categories?.name || "Uncategorized"}
+                    image={post.featured_image || "/generated/hero-spanish-conversation.png"}
+                    date={post.published_at ? new Date(post.published_at).toLocaleDateString() : new Date(post.created_at).toLocaleDateString()}
+                    slug={`/blog/${post.slug}`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </main>
 
+        <SidebarWidgets />
         <TestimonialsSlider />
         <Footer />
       </div>
