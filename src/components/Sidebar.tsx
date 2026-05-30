@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Mail } from "lucide-react";
+import Link from "next/link";
 
 export function Sidebar() {
   const popularLessons = [
@@ -33,28 +34,76 @@ export function Sidebar() {
         </div>
       </Card>
 
-      {/* Popular Posts */}
-      <Card className="p-6 border-border">
-        <h3 className="font-bold text-lg font-heading text-foreground mb-4">Popular Posts</h3>
-        <div className="space-y-3">
-          {popularLessons.map((lesson, idx) => (
-            <a 
-              key={idx} 
-              href="#" 
-              className="flex items-center gap-3 group hover:bg-muted/50 p-2 rounded transition-colors"
-            >
-              <div className="w-16 h-16 rounded bg-muted flex-shrink-0">
-                <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 rounded flex items-center justify-center text-xs text-foreground/40">
-                  Lesson {idx + 1}
-                </div>
-              </div>
-              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                {lesson.title}
-              </span>
-            </a>
-          ))}
+      {/* Popular Lessons */}
+      <div>
+        <h3 className="font-bold text-lg font-heading text-foreground mb-4">Popular Lessons</h3>
+        <div className="space-y-4">
+          <Link href="/blog/spain-vs-latin-american-spanish" className="flex gap-3 group">
+            <img 
+              src="/generated/hero-spanish-conversation.png" 
+              alt="Spain vs Latin American Spanish"
+              className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
+            />
+            <div>
+              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                Spain vs Latin American Spanish
+              </h4>
+            </div>
+          </Link>
+          
+          <Link href="/blog/learn-spanish-learning-at-night-school" className="flex gap-3 group">
+            <img 
+              src="/generated/hero-spanish-conversation.png" 
+              alt="Learn Spanish: Learning At Night School"
+              className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
+            />
+            <div>
+              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                Learn Spanish: Learning At Night School
+              </h4>
+            </div>
+          </Link>
+          
+          <Link href="/blog/learn-spanish-private-tuition" className="flex gap-3 group">
+            <img 
+              src="/generated/hero-spanish-conversation.png" 
+              alt="Learn Spanish: Private Tuition"
+              className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
+            />
+            <div>
+              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                Learn Spanish: Private Tuition
+              </h4>
+            </div>
+          </Link>
+          
+          <Link href="/blog/learn-spanish-audiobooks-podcasts-youtube" className="flex gap-3 group">
+            <img 
+              src="/generated/hero-spanish-conversation.png" 
+              alt="Learn Spanish: Audiobooks, Podcasts & YouTube"
+              className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
+            />
+            <div>
+              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                Learn Spanish: Audiobooks, Podcasts & YouTube
+              </h4>
+            </div>
+          </Link>
+          
+          <Link href="/blog/learn-spanish-tips-and-tricks" className="flex gap-3 group">
+            <img 
+              src="/generated/hero-spanish-conversation.png" 
+              alt="Learn Spanish: Tips and Tricks"
+              className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
+            />
+            <div>
+              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                Learn Spanish: Tips and Tricks
+              </h4>
+            </div>
+          </Link>
         </div>
-      </Card>
+      </div>
 
       {/* Newsletter Opt-in */}
       <Card className="p-6 border-border bg-gradient-to-br from-primary/5 to-accent/5">
