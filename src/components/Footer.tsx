@@ -34,46 +34,18 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Social Media */}
+          {/* Contact Us */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold font-heading mb-4">Follow Us</h3>
+            <h3 className="text-xl font-bold font-heading mb-4">Contact Us</h3>
             <p className="text-background/80 mb-6">
-              Join our community on social media for daily Spanish tips and inspiration!
+              Have questions or feedback? We'd love to hear from you!
             </p>
-            <div className="flex gap-4">
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 hover:bg-primary flex items-center justify-center transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 hover:bg-primary flex items-center justify-center transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 hover:bg-primary flex items-center justify-center transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://youtube.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 hover:bg-primary flex items-center justify-center transition-colors"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div>
+            <a 
+              href="mailto:letsmasterspanish@europe.com"
+              className="inline-block text-background/80 hover:text-primary transition-colors underline"
+            >
+              letsmasterspanish@europe.com
+            </a>
           </div>
         </div>
 
