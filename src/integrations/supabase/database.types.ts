@@ -1,4 +1,4 @@
- 
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 export type Json =
   | string
   | number
@@ -18,6 +18,7 @@ export type Database = {
       blog_posts: {
         Row: {
           author_id: string | null
+          author_name: string | null
           category_id: string | null
           content: string
           created_at: string | null
@@ -35,6 +36,7 @@ export type Database = {
         }
         Insert: {
           author_id?: string | null
+          author_name?: string | null
           category_id?: string | null
           content: string
           created_at?: string | null
@@ -52,6 +54,7 @@ export type Database = {
         }
         Update: {
           author_id?: string | null
+          author_name?: string | null
           category_id?: string | null
           content?: string
           created_at?: string | null

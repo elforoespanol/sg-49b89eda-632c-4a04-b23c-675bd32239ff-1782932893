@@ -36,7 +36,10 @@ export default function CreateNewBlogPost() {
     tags: "",
     meta_description: "",
     status: "draft" as "draft" | "published",
+    author_name: "",
   });
+
+  const AUTHORS = ["Wesley Gómez", "Emillio García", "Mauricio Rodríguez"];
 
   useEffect(() => {
     checkAuth();
@@ -90,6 +93,7 @@ export default function CreateNewBlogPost() {
           tags: Array.isArray(data.tags) ? data.tags.join(", ") : "",
           meta_description: data.meta_description || "",
           status: data.status as "draft" | "published",
+          author_name: data.author_name || "",
         });
       }
     } catch (error) {
@@ -325,6 +329,24 @@ export default function CreateNewBlogPost() {
                     placeholder="Brief description for search engines"
                     rows={2}
                   />
+                </div>
+
+                <div>
+                  <Label htmlFor="author">Author *</Label>
+                  <select
+                    id="author"
+                    value={formData.author_name}
+                    onChange={(e) => setFormData({ ...formData, author_name: e.target.value })}
+                    className="w-full rounded-md border border-input bg-background px-3 py-2"
+                    required
+                  >
+                    <option value="">Select an author</option>
+                    {AUTHORS.map((author) => (
+                      <option key={author} value={author}>
+                        {author}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
 
