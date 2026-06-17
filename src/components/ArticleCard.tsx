@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Clock, Calendar, Edit } from "lucide-react";
+import { Clock, Calendar, Edit, User } from "lucide-react";
 import { useState, useEffect } from "react";
 import { authService } from "@/services/authService";
 
@@ -13,9 +13,10 @@ interface ArticleCardProps {
   date: string;
   slug: string;
   postId?: string;
+  authorName?: string;
 }
 
-export function ArticleCard({ title, excerpt, category, image, date, slug, postId }: ArticleCardProps) {
+export function ArticleCard({ title, excerpt, category, image, date, slug, postId, authorName }: ArticleCardProps) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
@@ -44,10 +45,16 @@ export function ArticleCard({ title, excerpt, category, image, date, slug, postI
 
             {/* Content */}
             <div className="p-6 flex-1 flex flex-col">
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
                 <Badge className="bg-primary hover:bg-primary/90">
                   {category}
                 </Badge>
+                {authorName && (
+                  <span className="text-sm text-muted-foreground flex items-center gap-1">
+                    <User className="h-4 w-4" />
+                    {authorName}
+                  </span>
+                )}
                 <span className="text-sm text-muted-foreground flex items-center gap-1">
                   <Calendar className="h-4 w-4" />
                   {date}
