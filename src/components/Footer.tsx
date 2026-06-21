@@ -40,10 +40,10 @@ export function Footer() {
               Have questions or feedback? We'd love to hear from you!
             </p>
             <a 
-              href="mailto:letsmasterspanish@europe.com"
+              href="mailto:admin@letsmasterspanish.com"
               className="inline-block text-background/80 hover:text-primary transition-colors underline"
             >
-              letsmasterspanish@europe.com
+              admin@letsmasterspanish.com
             </a>
           </div>
         </div>
