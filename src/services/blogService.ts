@@ -158,6 +158,7 @@ export const blogService = {
         cacheControl: "3600",
         upsert: false,
         contentType: file.type || "video/mp4",
+        useTus: true,
       });
 
     if (error) {
