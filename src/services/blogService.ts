@@ -149,20 +149,24 @@ export const blogService = {
 
   async uploadVideo(file: File): Promise<string> {
     const fileExt = file.name.split(".").pop();
-    const fileName = `${Math.random()}.${fileExt}`;
+    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
     const filePath = `videos/${fileName}`;
 
-    const { error: uploadError } = await supabase.storage
+    const { data, error } = await supabase.storage
       .from("blog-images")
-      .upload(filePath, file);
+      .upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type || "video/mp4",
+      });
 
-    if (uploadError) {
-      throw uploadError;
+    if (error) {
+      throw error;
     }
 
-    const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+    const { data: urlData } = supabase.storage.from("blog-images").getPublicUrl(filePath);
 
-    return data.publicUrl;
+    return urlData.publicUrl;
   },
 
   // Increment view count
