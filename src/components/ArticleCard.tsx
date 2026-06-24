@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Clock, Calendar, Edit, User } from "lucide-react";
+import { Clock, Calendar, Edit, User, Play } from "lucide-react";
 import { useState, useEffect } from "react";
 import { authService } from "@/services/authService";
 
@@ -14,9 +14,10 @@ interface ArticleCardProps {
   slug: string;
   postId?: string;
   authorName?: string;
+  videoUrl?: string;
 }
 
-export function ArticleCard({ title, excerpt, category, image, date, slug, postId, authorName }: ArticleCardProps) {
+export function ArticleCard({ title, excerpt, category, image, date, slug, postId, authorName, videoUrl }: ArticleCardProps) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
@@ -49,6 +50,12 @@ export function ArticleCard({ title, excerpt, category, image, date, slug, postI
                 <Badge className="bg-primary hover:bg-primary/90">
                   {category}
                 </Badge>
+                {videoUrl && (
+                  <Badge variant="outline" className="gap-1 border-primary text-primary">
+                    <Play className="h-3 w-3" />
+                    Video
+                  </Badge>
+                )}
                 {authorName && (
                   <span className="text-sm text-muted-foreground flex items-center gap-1">
                     <User className="h-4 w-4" />

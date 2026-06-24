@@ -29,18 +29,24 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6">
-            <Link href="/categories/learn-spanish" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
-              Learn Spanish
+          <nav className="hidden md:flex items-center gap-6">
+            <Link href="/" className="text-foreground/80 hover:text-primary transition-colors">
+              Home
             </Link>
-            <Link href="/categories/spanish-for-beginners" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
-              Spanish for Beginners
+            <Link href="/categories/spanish-basics" className="text-foreground/80 hover:text-primary transition-colors">
+              Spanish Basics
             </Link>
-            <Link href="/categories/spanish-learning-tips" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
-              Spanish Learning Tips
+            <Link href="/categories/grammar" className="text-foreground/80 hover:text-primary transition-colors">
+              Grammar
             </Link>
-            <Link href="/categories/spanish-language-courses" className="text-foreground hover:text-primary transition-colors font-medium whitespace-nowrap">
-              Courses & Apps
+            <Link href="/categories/vocabulary" className="text-foreground/80 hover:text-primary transition-colors">
+              Vocabulary
+            </Link>
+            <Link href="/vlog" className="text-foreground/80 hover:text-primary transition-colors">
+              Vlog
+            </Link>
+            <Link href="/about" className="text-foreground/80 hover:text-primary transition-colors">
+              About
             </Link>
           </nav>
         </div>

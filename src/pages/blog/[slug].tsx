@@ -169,6 +169,21 @@ export default function BlogPostPage() {
             </div>
           )}
 
+          {/* Video Embed */}
+          {post.video_url && (
+            <div className="mb-8 rounded-lg overflow-hidden">
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={post.video_url.replace("watch?v=", "embed/")}
+                  title={post.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          )}
+
           {/* Post Content */}
           <div className="prose prose-lg max-w-none">
             <div className="whitespace-pre-wrap text-foreground/90 leading-relaxed">

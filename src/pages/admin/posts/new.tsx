@@ -37,6 +37,7 @@ export default function CreateNewBlogPost() {
     meta_description: "",
     status: "draft" as "draft" | "published",
     author_name: "",
+    video_url: "",
   });
 
   const AUTHORS = ["Wesley Gómez", "Emillio García", "Mauricio Rodríguez"];
@@ -94,6 +95,7 @@ export default function CreateNewBlogPost() {
           meta_description: data.meta_description || "",
           status: data.status as "draft" | "published",
           author_name: data.author_name || "",
+          video_url: data.video_url || "",
         });
       }
     } catch (error) {
@@ -284,6 +286,19 @@ export default function CreateNewBlogPost() {
                       />
                     </div>
                   )}
+                </div>
+
+                <div>
+                  <Label htmlFor="video-url">YouTube Video URL (Optional)</Label>
+                  <Input
+                    id="video-url"
+                    value={formData.video_url}
+                    onChange={(e) => setFormData({ ...formData, video_url: e.target.value })}
+                    placeholder="https://www.youtube.com/watch?v=..."
+                  />
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Add a YouTube video URL to create a vlog post
+                  </p>
                 </div>
               </div>
 
