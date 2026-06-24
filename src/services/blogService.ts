@@ -1,5 +1,6 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from "@/integrations/supabase/types";
+import * as tus from "tus-js-client";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"];
 type BlogPostInsert = Database["public"]["Tables"]["blog_posts"]["Insert"];
@@ -152,21 +153,52 @@ export const blogService = {
     const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
     const filePath = `videos/${fileName}`;
 
-    const { data, error } = await supabase.storage
-      .from("blog-images")
-      .upload(filePath, file, {
-        cacheControl: "3600",
-        upsert: false,
-        contentType: file.type || "video/mp4",
+    // Get Supabase project details
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) throw new Error("Not authenticated");
+
+    const projectUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    const bucketName = "blog-images";
+
+    return new Promise((resolve, reject) => {
+      const upload = new tus.Upload(file, {
+        endpoint: `${projectUrl}/storage/v1/upload/resumable`,
+        retryDelays: [0, 3000, 5000, 10000, 20000],
+        headers: {
+          authorization: `Bearer ${session.access_token}`,
+          'x-upsert': 'false',
+        },
+        uploadDataDuringCreation: true,
+        removeFingerprintOnSuccess: true,
+        metadata: {
+          bucketName: bucketName,
+          objectName: filePath,
+          contentType: file.type || "video/mp4",
+          cacheControl: "3600",
+        },
+        chunkSize: 6 * 1024 * 1024, // 6MB chunks
+        onError: (error) => {
+          console.error("Upload failed:", error);
+          reject(error);
+        },
+        onProgress: (bytesUploaded, bytesTotal) => {
+          const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+          console.log(`Upload progress: ${percentage}%`);
+        },
+        onSuccess: () => {
+          const { data } = supabase.storage.from(bucketName).getPublicUrl(filePath);
+          resolve(data.publicUrl);
+        },
       });
 
-    if (error) {
-      throw error;
-    }
-
-    const { data: urlData } = supabase.storage.from("blog-images").getPublicUrl(filePath);
-
-    return urlData.publicUrl;
+      // Check if there are any previous uploads to continue
+      upload.findPreviousUploads().then((previousUploads) => {
+        if (previousUploads.length) {
+          upload.resumeFromPreviousUpload(previousUploads[0]);
+        }
+        upload.start();
+      });
+    });
   },
 
   // Increment view count
