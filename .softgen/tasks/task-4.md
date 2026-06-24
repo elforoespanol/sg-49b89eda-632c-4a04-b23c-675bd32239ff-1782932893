@@ -1,6 +1,6 @@
 ---
 title: Vlog Feature - YouTube Embeds & Dedicated Page
-status: in_progress
+status: done
 priority: high
 type: feature
 tags: [vlog, youtube, video]
@@ -21,14 +21,14 @@ Vlog page: Create /vlog page filtering posts with videos
 Navigation: Add "Vlog" link to header
 
 ## Checklist
-- [ ] Add `video_url` column to `blog_posts` table in database
-- [ ] Update database types to include `video_url` field
-- [ ] Add video URL input field to admin post creation form (src/pages/admin/posts/new.tsx)
-- [ ] Update blog post page (src/pages/blog/[slug].tsx) to display YouTube embed if video_url exists
-- [ ] Create dedicated /vlog page (src/pages/vlog.tsx) listing only video posts
-- [ ] Add "Vlog" link to header navigation (src/components/Header.tsx)
-- [ ] Update ArticleCard component to show video indicator for vlog posts
-- [ ] Validate build and test functionality
+- [x] Add `video_url` column to `blog_posts` table in database
+- [x] Update database types to include `video_url` field
+- [x] Add video URL input field to admin post creation form (src/pages/admin/posts/new.tsx)
+- [x] Update blog post page (src/pages/blog/[slug].tsx) to display YouTube embed if video_url exists
+- [x] Create dedicated /vlog page (src/pages/vlog.tsx) listing only video posts
+- [x] Add "Vlog" link to header navigation (src/components/Header.tsx)
+- [x] Update ArticleCard component to show video indicator for vlog posts
+- [x] Validate build and test functionality
 
 ## Acceptance
 - Admin can add YouTube video URLs when creating/editing posts
