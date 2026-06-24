@@ -118,6 +118,8 @@ export default function CategoryPage() {
                   image={post.featured_image || "/generated/hero-spanish-conversation.png"}
                   date={post.published_at ? new Date(post.published_at).toLocaleDateString() : new Date(post.created_at).toLocaleDateString()}
                   slug={`/blog/${post.slug}`}
+                  authorName={post.author_name || undefined}
+                  videoUrl={post.video_url || undefined}
                 />
               ))}
             </div>
