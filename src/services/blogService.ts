@@ -168,7 +168,7 @@ export const blogService = {
           authorization: `Bearer ${session.access_token}`,
           'x-upsert': 'false',
         },
-        uploadDataDuringCreation: true,
+        uploadDataDuringCreation: false,
         removeFingerprintOnSuccess: true,
         metadata: {
           bucketName: bucketName,
@@ -176,7 +176,7 @@ export const blogService = {
           contentType: file.type || "video/mp4",
           cacheControl: "3600",
         },
-        chunkSize: 6 * 1024 * 1024, // 6MB chunks
+        chunkSize: 10 * 1024 * 1024, // 10MB chunks for faster uploads
         onError: (error) => {
           console.error("Upload failed:", error);
           reject(error);
