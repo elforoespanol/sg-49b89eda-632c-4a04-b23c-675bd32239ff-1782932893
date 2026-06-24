@@ -129,24 +129,41 @@ export const blogService = {
   },
 
   // Upload image to Supabase Storage
-  async uploadImage(file: File, path: string) {
+  async uploadImage(file: File, folder: string): Promise<string> {
     const fileExt = file.name.split(".").pop();
-    const fileName = `${path}-${Date.now()}.${fileExt}`;
-    const filePath = `${fileName}`;
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `${folder}/${fileName}`;
 
-    const { data, error } = await supabase.storage
+    const { error: uploadError } = await supabase.storage
       .from("blog-images")
       .upload(filePath, file);
 
-    console.log("uploadImage:", { data, error });
-    if (error) throw error;
+    if (uploadError) {
+      throw uploadError;
+    }
 
-    const { data: { publicUrl } } = supabase.storage
+    const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+
+    return data.publicUrl;
+  }
+
+  async uploadVideo(file: File): Promise<string> {
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `videos/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
       .from("blog-images")
-      .getPublicUrl(filePath);
+      .upload(filePath, file);
 
-    return publicUrl;
-  },
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
+
+    return data.publicUrl;
+  }
 
   // Increment view count
   async incrementViewCount(id: string) {

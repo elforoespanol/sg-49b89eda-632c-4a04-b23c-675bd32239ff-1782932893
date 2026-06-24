@@ -22,6 +22,7 @@ export default function CreateNewBlogPost() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [imageUploading, setImageUploading] = useState(false);
+  const [videoUploading, setVideoUploading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [editMode, setEditMode] = useState(false);
   const [postId, setPostId] = useState<string | null>(null);
@@ -126,6 +127,27 @@ export default function CreateNewBlogPost() {
       alert("Failed to upload image");
     } finally {
       setImageUploading(false);
+    }
+  }
+
+  async function handleVideoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("video/")) {
+      alert("Please upload a video file");
+      return;
+    }
+
+    setVideoUploading(true);
+    try {
+      const videoUrl = await blogService.uploadVideo(file);
+      setFormData({ ...formData, video_url: videoUrl });
+    } catch (error) {
+      console.error("Error uploading video:", error);
+      alert("Failed to upload video");
+    } finally {
+      setVideoUploading(false);
     }
   }
 
@@ -289,16 +311,74 @@ export default function CreateNewBlogPost() {
                 </div>
 
                 <div>
-                  <Label htmlFor="video-url">YouTube Video URL (Optional)</Label>
-                  <Input
-                    id="video-url"
-                    value={formData.video_url}
-                    onChange={(e) => setFormData({ ...formData, video_url: e.target.value })}
-                    placeholder="https://www.youtube.com/watch?v=..."
-                  />
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Add a YouTube video URL to create a vlog post
-                  </p>
+                  <Label htmlFor="video-url">Video (Optional)</Label>
+                  <div className="space-y-3">
+                    <div>
+                      <Label htmlFor="video-url-input" className="text-sm font-normal">
+                        YouTube URL
+                      </Label>
+                      <Input
+                        id="video-url-input"
+                        value={formData.video_url.includes("youtube.com") || formData.video_url.includes("youtu.be") ? formData.video_url : ""}
+                        onChange={(e) => setFormData({ ...formData, video_url: e.target.value })}
+                        placeholder="https://www.youtube.com/watch?v=..."
+                      />
+                    </div>
+                    
+                    <div className="text-center text-sm text-muted-foreground">or</div>
+                    
+                    <div>
+                      <Label htmlFor="video-file" className="text-sm font-normal">
+                        Upload MP4 Video
+                      </Label>
+                      <div className="flex gap-4 items-start">
+                        <Input
+                          id="video-file"
+                          type="file"
+                          accept="video/mp4,video/*"
+                          onChange={handleVideoUpload}
+                          disabled={videoUploading}
+                        />
+                        {videoUploading && (
+                          <p className="text-sm text-muted-foreground">Uploading...</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {formData.video_url && (
+                      <div className="mt-4 p-4 bg-muted rounded-lg">
+                        <p className="text-sm font-medium mb-2">Video Preview:</p>
+                        {formData.video_url.includes("youtube.com") || formData.video_url.includes("youtu.be") ? (
+                          <div className="relative w-full max-w-md" style={{ paddingBottom: "56.25%" }}>
+                            <iframe
+                              className="absolute top-0 left-0 w-full h-full rounded"
+                              src={formData.video_url.replace("watch?v=", "embed/")}
+                              title="Video preview"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          </div>
+                        ) : (
+                          <video
+                            src={formData.video_url}
+                            controls
+                            className="w-full max-w-md rounded"
+                          >
+                            Your browser does not support the video tag.
+                          </video>
+                        )}
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          className="mt-2 text-destructive hover:text-destructive"
+                          onClick={() => setFormData({ ...formData, video_url: "" })}
+                        >
+                          Remove Video
+                        </Button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 

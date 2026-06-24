@@ -172,15 +172,26 @@ export default function BlogPostPage() {
           {/* Video Embed */}
           {post.video_url && (
             <div className="mb-8 rounded-lg overflow-hidden">
-              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full"
-                  src={post.video_url.replace("watch?v=", "embed/")}
-                  title={post.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              {(post.video_url.includes("youtube.com") || post.video_url.includes("youtu.be")) ? (
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={post.video_url.replace("watch?v=", "embed/")}
+                    title={post.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <video
+                  src={post.video_url}
+                  controls
+                  className="w-full rounded-lg"
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           )}
 
