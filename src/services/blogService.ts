@@ -145,7 +145,7 @@ export const blogService = {
     const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
 
     return data.publicUrl;
-  }
+  },
 
   async uploadVideo(file: File): Promise<string> {
     const fileExt = file.name.split(".").pop();
@@ -163,7 +163,7 @@ export const blogService = {
     const { data } = supabase.storage.from("blog-images").getPublicUrl(filePath);
 
     return data.publicUrl;
-  }
+  },
 
   // Increment view count
   async incrementViewCount(id: string) {
