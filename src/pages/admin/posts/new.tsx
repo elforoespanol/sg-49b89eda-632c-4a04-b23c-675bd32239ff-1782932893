@@ -158,6 +158,7 @@ export default function CreateNewBlogPost() {
     try {
       const postData = {
         ...formData,
+        category_id: formData.category_id || null,
         status,
         tags: formData.tags.split(",").map(t => t.trim()).filter(Boolean),
         published_at: status === "published" ? new Date().toISOString() : null,
