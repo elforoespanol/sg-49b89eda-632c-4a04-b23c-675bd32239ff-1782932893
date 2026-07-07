@@ -149,56 +149,42 @@ export const blogService = {
   },
 
   async uploadVideo(file: File): Promise<string> {
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-    const filePath = `videos/${fileName}`;
-
-    // Get Supabase project details
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) throw new Error("Not authenticated");
-
-    const projectUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const bucketName = "blog-images";
-
-    return new Promise((resolve, reject) => {
-      const upload = new tus.Upload(file, {
-        endpoint: `${projectUrl}/storage/v1/upload/resumable`,
-        retryDelays: [0, 3000, 5000, 10000, 20000],
-        headers: {
-          authorization: `Bearer ${session.access_token}`,
-          'x-upsert': 'false',
-        },
-        uploadDataDuringCreation: false,
-        removeFingerprintOnSuccess: true,
-        metadata: {
-          bucketName: bucketName,
-          objectName: filePath,
-          contentType: file.type || "video/mp4",
-          cacheControl: "3600",
-        },
-        chunkSize: 10 * 1024 * 1024, // 10MB chunks for faster uploads
-        onError: (error) => {
-          console.error("Upload failed:", error);
-          reject(error);
-        },
-        onProgress: (bytesUploaded, bytesTotal) => {
-          const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
-          console.log(`Upload progress: ${percentage}%`);
-        },
-        onSuccess: () => {
-          const { data } = supabase.storage.from(bucketName).getPublicUrl(filePath);
-          resolve(data.publicUrl);
-        },
-      });
-
-      // Check if there are any previous uploads to continue
-      upload.findPreviousUploads().then((previousUploads) => {
-        if (previousUploads.length) {
-          upload.resumeFromPreviousUpload(previousUploads[0]);
-        }
-        upload.start();
-      });
+    const res = await fetch("/api/r2/presigned-url", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fileName: file.name,
+        contentType: file.type || "video/mp4",
+      }),
     });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to get upload URL");
+    }
+
+    const { uploadUrl, videoUrl } = await res.json();
+
+    await fetch(uploadUrl, {
+      method: "PUT",
+      headers: { "Content-Type": file.type || "video/mp4" },
+      body: file,
+    });
+
+    return videoUrl;
+  },
+
+  async deleteVideo(videoUrl: string): Promise<void> {
+    const res = await fetch("/api/r2/delete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ videoUrl }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to delete video");
+    }
   },
 
   // Increment view count
