@@ -1,6 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from "@/integrations/supabase/types";
-import * as tus from "tus-js-client";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"];
 type BlogPostInsert = Database["public"]["Tables"]["blog_posts"]["Insert"];
