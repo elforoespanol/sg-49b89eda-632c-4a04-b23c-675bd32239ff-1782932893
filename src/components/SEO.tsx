@@ -5,63 +5,98 @@ interface SEOProps {
   description?: string;
   image?: string;
   url?: string;
+  canonical?: string;
+  ogType?: string;
+  publishedTime?: string;
+  author?: string;
 }
+
+const SITE_NAME = "Let's Master Spanish";
+const SITE_URL = "https://letsmasterspanish.com";
+const DEFAULT_TITLE = "Let's Master Spanish — Learn Spanish with Proven Strategies";
+const DEFAULT_DESCRIPTION = "Empowering Spanish language learners from beginner to fluent through proven strategies, high-quality lessons, and community engagement.";
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
 
 // SEO elements that can be used in _document.tsx (returns JSX without Head wrapper)
 export function SEOElements({
-  title = "Hello World",
-  description = "Welcome to my app",
-  image = "/og-image.png",
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  image = DEFAULT_IMAGE,
   url,
+  canonical,
+  ogType = "website",
+  publishedTime,
+  author,
 }: SEOProps) {
+  const pageUrl = url ? `${SITE_URL}${url}` : SITE_URL;
+  const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : pageUrl;
+
   return (
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="icon" href="/favicon.ico" />
+      <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
-      {url && <meta property="og:url" content={url} />}
-      <meta property="og:type" content="website" />
+      <meta property="og:image" content={image || DEFAULT_IMAGE} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:type" content={ogType} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="en_US" />
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {author && <meta property="article:author" content={author} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      {image && <meta name="twitter:image" content={image} />}
+      <meta name="twitter:image" content={image || DEFAULT_IMAGE} />
+      <meta name="twitter:site" content="@LetsMasterSpanish" />
     </>
   );
 }
 
-// SEO component for use in pages/_app.tsx or individual pages (uses next/head)
-// Note: Flattened structure (no fragment) for better Next.js Head compatibility during hot reload
+// SEO component for use in pages (uses next/head)
 export function SEO({
-  title = "Hello World",
-  description = "Welcome to my app",
-  image = "/og-image.png",
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  image = DEFAULT_IMAGE,
   url,
+  canonical,
+  ogType = "website",
+  publishedTime,
+  author,
 }: SEOProps) {
+  const pageUrl = url ? `${SITE_URL}${url}` : SITE_URL;
+  const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : pageUrl;
+
   return (
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/logo.jpg" />
+      <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
-      {url && <meta property="og:url" content={url} />}
-      <meta property="og:type" content="website" />
+      <meta property="og:image" content={image || DEFAULT_IMAGE} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:type" content={ogType} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="en_US" />
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {author && <meta property="article:author" content={author} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      {image && <meta name="twitter:image" content={image} />}
+      <meta name="twitter:image" content={image || DEFAULT_IMAGE} />
+      <meta name="twitter:site" content="@LetsMasterSpanish" />
     </Head>
   );
 }
