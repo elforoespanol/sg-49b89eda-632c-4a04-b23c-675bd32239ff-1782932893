@@ -1,11 +1,11 @@
 ---
 title: SEO - Functional Search
-status: todo
+status: done
 priority: medium
 type: feature
 tags: [seo, search, ux]
 created_by: agent
-created_at: 2026-07-09T18:40:00Z
+created_at: 2026-07-09T18:38:00Z
 position: 3
 ---
 
