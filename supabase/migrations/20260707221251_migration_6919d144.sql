@@ -1,0 +1,2 @@
+ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS author_name TEXT;
+ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS video_url TEXT;
