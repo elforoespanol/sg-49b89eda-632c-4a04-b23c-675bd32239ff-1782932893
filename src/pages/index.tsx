@@ -9,6 +9,7 @@ import { SidebarWidgets } from "@/components/Sidebar";
 import { Footer } from "@/components/Footer";
 import { blogService } from "@/services/blogService";
 import type { Database } from "@/integrations/supabase/types";
+import Head from "next/head";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
   categories: { name: string; slug: string } | null;
@@ -33,12 +34,51 @@ export default function Home() {
     }
   }
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Let's Master Spanish",
+    "url": "https://letsmasterspanish.com",
+    "description": "Empowering Spanish language learners from beginner to fluent through proven strategies, high-quality lessons, and community engagement.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://letsmasterspanish.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Let's Master Spanish",
+    "url": "https://letsmasterspanish.com",
+    "logo": "https://letsmasterspanish.com/logo.jpg",
+    "description": "Educational blog empowering Spanish language learners from beginner to fluent through proven strategies, high-quality lessons, and community engagement.",
+    "sameAs": [
+      "https://facebook.com/letsmasterspanish",
+      "https://twitter.com/LetsMasterSpanish",
+      "https://instagram.com/letsmasterspanish"
+    ]
+  };
+
   return (
     <>
       <SEO 
         title="Let's Master Spanish - Learn Spanish with Proven Strategies"
         description="Empowering Spanish language learners from beginner to fluent through proven strategies, high-quality lessons, and community engagement."
+        canonical="/"
       />
+      
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+      </Head>
       
       <div className="min-h-screen flex flex-col bg-background">
         <AnnouncementBar />
