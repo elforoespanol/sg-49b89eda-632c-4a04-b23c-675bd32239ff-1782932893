@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createClient } from "@/integrations/supabase/client";
+import { supabase } from "@/integrations/supabase/client";
 
 const SITE_URL = "https://letsmasterspanish.com";
 
@@ -7,8 +7,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const supabase = createClient();
-
   const { data: posts } = await supabase
     .from("blog_posts")
     .select("slug, updated_at")
