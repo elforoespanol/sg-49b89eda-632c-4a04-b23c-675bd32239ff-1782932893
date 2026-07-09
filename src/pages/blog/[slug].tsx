@@ -10,6 +10,7 @@ import { blogService } from "@/services/blogService";
 import { authService } from "@/services/authService";
 import { Calendar, Eye, User, Edit } from "lucide-react";
 import type { Database } from "@/integrations/supabase/types";
+import Head from "next/head";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
   categories: { name: string; slug: string } | null;
@@ -49,6 +50,56 @@ export default function BlogPostPage() {
       setLoading(false);
     }
   }
+
+  const articleJsonLd = post ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.meta_description || post.excerpt || post.content.substring(0, 160),
+    "image": post.featured_image ? (post.featured_image.startsWith("http") ? post.featured_image : `https://letsmasterspanish.com${post.featured_image}`) : "https://letsmasterspanish.com/og-image.png",
+    "datePublished": post.published_at || post.created_at,
+    "dateModified": post.updated_at,
+    "author": {
+      "@type": "Person",
+      "name": post.author_name || "Let's Master Spanish Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Let's Master Spanish",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://letsmasterspanish.com/logo.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://letsmasterspanish.com/blog/${post.slug}`
+    }
+  } : null;
+
+  const breadcrumbJsonLd = post ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://letsmasterspanish.com"
+      },
+      ...(post.categories ? [{
+        "@type": "ListItem",
+        "position": 2,
+        "name": post.categories.name,
+        "item": `https://letsmasterspanish.com/categories/${post.categories.slug}`
+      }] : []),
+      {
+        "@type": "ListItem",
+        "position": post.categories ? 3 : 2,
+        "name": post.title
+      }
+    ]
+  } : null;
 
   if (loading) {
     return (
@@ -91,7 +142,26 @@ export default function BlogPostPage() {
         title={`${post.title} - Let's Master Spanish`}
         description={post.meta_description || post.excerpt || post.content.substring(0, 160)}
         image={post.featured_image || undefined}
+        canonical={`/blog/${post.slug}`}
+        ogType="article"
+        publishedTime={post.published_at || post.created_at}
+        author={post.author_name || undefined}
       />
+      
+      <Head>
+        {articleJsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+          />
+        )}
+        {breadcrumbJsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+          />
+        )}
+      </Head>
       
       <div className="min-h-screen flex flex-col bg-background">
         <Header />

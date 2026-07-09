@@ -1,31 +1,38 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { blogService } from "@/services/blogService";
-import { Play } from "lucide-react";
+import { Search as SearchIcon } from "lucide-react";
 import type { Database } from "@/integrations/supabase/types";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
   categories: { name: string; slug: string } | null;
 };
 
-export default function VlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function SearchPage() {
+  const router = useRouter();
+  const { q } = router.query;
+  const [results, setResults] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
 
   useEffect(() => {
-    loadVlogPosts();
-  }, []);
+    if (q && typeof q === "string") {
+      performSearch(q);
+    }
+  }, [q]);
 
-  async function loadVlogPosts() {
+  async function performSearch(query: string) {
+    setLoading(true);
+    setSearched(true);
     try {
-      const allPosts = await blogService.getPublishedPosts(50);
-      const videoPosts = allPosts.filter((post) => post.video_url);
-      setPosts(videoPosts);
+      const data = await blogService.searchPosts(query);
+      setResults(data);
     } catch (error) {
-      console.error("Error loading vlog posts:", error);
+      console.error("Search error:", error);
     } finally {
       setLoading(false);
     }
@@ -33,49 +40,56 @@ export default function VlogPage() {
 
   return (
     <>
-      <SEO
-        title="Vlog - Let's Master Spanish"
-        description="Watch our Spanish learning video lessons and vlogs. Visual guides to help you master Spanish faster."
-        canonical="/vlog"
+      <SEO 
+        title={q ? `Search: ${q} - Let's Master Spanish` : "Search - Let's Master Spanish"}
+        description={`Search results for "${q || ""}" on Let's Master Spanish`}
+        canonical={`/search?q=${encodeURIComponent(q || "")}`}
       />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
 
         <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
-          {/* Vlog Header */}
+          {/* Search Header */}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Play className="h-6 w-6 text-primary" />
+                <SearchIcon className="h-6 w-6 text-primary" />
               </div>
-              <h1 className="text-5xl font-bold text-foreground font-heading">
-                Vlog
+              <h1 className="text-4xl font-bold text-foreground font-heading">
+                Search Results
               </h1>
             </div>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Watch our video lessons and vlogs covering Spanish pronunciation,
-              grammar tips, cultural insights, and real-world conversations to
-              accelerate your learning journey.
-            </p>
+            {q && (
+              <p className="text-lg text-muted-foreground">
+                {loading ? (
+                  "Searching..."
+                ) : (
+                  <>
+                    {results.length} {results.length === 1 ? "result" : "results"} for{" "}
+                    <span className="font-semibold text-foreground">"{q}"</span>
+                  </>
+                )}
+              </p>
+            )}
           </div>
 
-          {/* Vlog Posts */}
+          {/* Results */}
           {loading ? (
-            <p className="text-muted-foreground">Loading videos...</p>
-          ) : posts.length === 0 ? (
+            <p className="text-muted-foreground">Searching...</p>
+          ) : searched && results.length === 0 ? (
             <div className="text-center py-16">
-              <Play className="h-16 w-16 text-muted-foreground/30 mx-auto mb-4" />
+              <SearchIcon className="h-16 w-16 text-muted-foreground/30 mx-auto mb-4" />
               <p className="text-xl text-muted-foreground">
-                No video posts published yet.
+                No results found for "{q}"
               </p>
               <p className="text-muted-foreground mt-2">
-                Check back soon for new video content!
+                Try different keywords or browse our categories.
               </p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 gap-8">
-              {posts.map((post) => (
+              {results.map((post) => (
                 <ArticleCard
                   key={post.id}
                   postId={post.id}

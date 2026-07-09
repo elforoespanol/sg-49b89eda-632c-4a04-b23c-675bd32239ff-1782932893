@@ -1,22 +1,36 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 export function Header() {
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
       {/* Top row: Search Bar */}
       <div className="bg-muted">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center">
+        <form onSubmit={handleSearch} className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center">
           <div className="relative w-full max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
             <Input 
               type="search" 
               placeholder="Search Posts...." 
               className="pl-9 bg-background border-border w-full"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-        </div>
+        </form>
       </div>
 
       {/* Bottom row: Logo + Navigation */}

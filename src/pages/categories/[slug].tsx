@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { blogService } from "@/services/blogService";
 import type { Database } from "@/integrations/supabase/types";
+import Head from "next/head";
 
 type Category = Database["public"]["Tables"]["categories"]["Row"];
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
@@ -76,12 +77,40 @@ export default function CategoryPage() {
     );
   }
 
+  const breadcrumbJsonLd = category ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://letsmasterspanish.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": category.name
+      }
+    ]
+  } : null;
+
   return (
     <>
       <SEO 
         title={`${category.name} - Let's Master Spanish`}
         description={`Browse all articles in the ${category.name} category`}
+        canonical={`/categories/${category.slug}`}
       />
+      
+      <Head>
+        {breadcrumbJsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+          />
+        )}
+      </Head>
       
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
