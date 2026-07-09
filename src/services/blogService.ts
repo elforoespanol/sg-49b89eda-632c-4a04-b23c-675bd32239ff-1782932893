@@ -20,6 +20,19 @@ export const blogService = {
     return data || [];
   },
 
+  async searchPosts(query: string) {
+    const searchTerm = `%${query}%`;
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select(`*, categories(name, slug)`)
+      .eq("status", "published")
+      .or(`title.ilike.${searchTerm},content.ilike.${searchTerm},excerpt.ilike.${searchTerm}`)
+      .order("published_at", { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  },
+
   async getAllPosts() {
     const { data, error } = await supabase
       .from("blog_posts")

@@ -15,21 +15,22 @@ type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
 export default function SearchPage() {
   const router = useRouter();
   const { q } = router.query;
+  const query = typeof q === "string" ? q : "";
   const [results, setResults] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
 
   useEffect(() => {
-    if (q && typeof q === "string") {
-      performSearch(q);
+    if (query) {
+      performSearch(query);
     }
-  }, [q]);
+  }, [query]);
 
-  async function performSearch(query: string) {
+  async function performSearch(searchQuery: string) {
     setLoading(true);
     setSearched(true);
     try {
-      const data = await blogService.searchPosts(query);
+      const data = await blogService.searchPosts(searchQuery);
       setResults(data);
     } catch (error) {
       console.error("Search error:", error);
@@ -41,9 +42,9 @@ export default function SearchPage() {
   return (
     <>
       <SEO 
-        title={q ? `Search: ${q} - Let's Master Spanish` : "Search - Let's Master Spanish"}
-        description={`Search results for "${q || ""}" on Let's Master Spanish`}
-        canonical={`/search?q=${encodeURIComponent(q || "")}`}
+        title={query ? `Search: ${query} - Let's Master Spanish` : "Search - Let's Master Spanish"}
+        description={`Search results for "${query}" on Let's Master Spanish`}
+        canonical={`/search?q=${encodeURIComponent(query)}`}
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -60,14 +61,14 @@ export default function SearchPage() {
                 Search Results
               </h1>
             </div>
-            {q && (
+            {query && (
               <p className="text-lg text-muted-foreground">
                 {loading ? (
                   "Searching..."
                 ) : (
                   <>
                     {results.length} {results.length === 1 ? "result" : "results"} for{" "}
-                    <span className="font-semibold text-foreground">"{q}"</span>
+                    <span className="font-semibold text-foreground">"{query}"</span>
                   </>
                 )}
               </p>
@@ -81,7 +82,7 @@ export default function SearchPage() {
             <div className="text-center py-16">
               <SearchIcon className="h-16 w-16 text-muted-foreground/30 mx-auto mb-4" />
               <p className="text-xl text-muted-foreground">
-                No results found for "{q}"
+                No results found for "{query}"
               </p>
               <p className="text-muted-foreground mt-2">
                 Try different keywords or browse our categories.
