@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -229,12 +230,13 @@ export default function BlogPostPage() {
 
           {/* Featured Image */}
           {post.featured_image && (
-            <div className="mb-8 rounded-lg overflow-hidden">
-              <img
+            <div className="mb-8 rounded-lg overflow-hidden relative aspect-video">
+              <Image
                 src={post.featured_image}
                 alt={post.title}
-                className="w-full h-auto"
-                loading="eager"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
               />
             </div>
           )}

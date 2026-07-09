@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, Calendar, Edit, User, Play } from "lucide-react";
@@ -36,11 +37,12 @@ export function ArticleCard({ title, excerpt, category, image, date, slug, postI
           <div className="md:flex gap-6">
             {/* Image */}
             <div className="md:w-80 h-64 md:h-auto relative overflow-hidden">
-              <img
+              <Image
                 src={image}
                 alt={title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, 320px"
               />
             </div>
 

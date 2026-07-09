@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -27,11 +28,13 @@ export function Hero() {
 
           {/* Right: Hero image */}
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
-            <img 
+            <Image 
               src="/generated/hero-spanish-conversation.png" 
               alt="People conversing in Spanish at a vibrant outdoor café"
-              loading="eager"
-              className="w-full h-full object-cover"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>

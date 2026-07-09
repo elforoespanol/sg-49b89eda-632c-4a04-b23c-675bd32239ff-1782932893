@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function SidebarWidgets() {
@@ -14,11 +15,15 @@ export function SidebarWidgets() {
             <h2 className="text-3xl font-bold text-foreground font-heading mb-8">Popular Posts</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <Link href="/blog/spain-vs-latin-american-spanish" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-                <img 
-                  src="/generated/hero-spanish-conversation.png" 
-                  alt="Spain vs Latin American Spanish"
-                  className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
-                />
+                <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded">
+                  <Image 
+                    src="/generated/hero-spanish-conversation.png" 
+                    alt="Spain vs Latin American Spanish"
+                    fill
+                    className="object-cover group-hover:opacity-75 transition-opacity"
+                    sizes="64px"
+                  />
+                </div>
                 <div>
                   <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
                     Spain vs Latin American Spanish
@@ -27,11 +32,15 @@ export function SidebarWidgets() {
               </Link>
               
               <Link href="/blog/learn-spanish-learning-at-night-school" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-                <img 
-                  src="/generated/hero-spanish-conversation.png" 
-                  alt="Learn Spanish: Learning At Night School"
-                  className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
-                />
+                <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded">
+                  <Image 
+                    src="/generated/hero-spanish-conversation.png" 
+                    alt="Learn Spanish: Learning At Night School"
+                    fill
+                    className="object-cover group-hover:opacity-75 transition-opacity"
+                    sizes="64px"
+                  />
+                </div>
                 <div>
                   <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
                     Learn Spanish: Learning At Night School
@@ -40,11 +49,15 @@ export function SidebarWidgets() {
               </Link>
               
               <Link href="/blog/learn-spanish-private-tuition" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-                <img 
-                  src="/generated/hero-spanish-conversation.png" 
-                  alt="Learn Spanish: Private Tuition"
-                  className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
-                />
+                <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded">
+                  <Image 
+                    src="/generated/hero-spanish-conversation.png" 
+                    alt="Learn Spanish: Private Tuition"
+                    fill
+                    className="object-cover group-hover:opacity-75 transition-opacity"
+                    sizes="64px"
+                  />
+                </div>
                 <div>
                   <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
                     Learn Spanish: Private Tuition
@@ -53,11 +66,15 @@ export function SidebarWidgets() {
               </Link>
               
               <Link href="/blog/learn-spanish-audiobooks-podcasts-youtube" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-                <img 
-                  src="/generated/hero-spanish-conversation.png" 
-                  alt="Learn Spanish: Audiobooks, Podcasts & YouTube"
-                  className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
-                />
+                <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded">
+                  <Image 
+                    src="/generated/hero-spanish-conversation.png" 
+                    alt="Learn Spanish: Audiobooks, Podcasts & YouTube"
+                    fill
+                    className="object-cover group-hover:opacity-75 transition-opacity"
+                    sizes="64px"
+                  />
+                </div>
                 <div>
                   <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
                     Learn Spanish: Audiobooks, Podcasts & YouTube
@@ -66,11 +83,15 @@ export function SidebarWidgets() {
               </Link>
               
               <Link href="/blog/learn-spanish-tips-and-tricks" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-                <img 
-                  src="/generated/hero-spanish-conversation.png" 
-                  alt="Learn Spanish: Tips and Tricks"
-                  className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
-                />
+                <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded">
+                  <Image 
+                    src="/generated/hero-spanish-conversation.png" 
+                    alt="Learn Spanish: Tips and Tricks"
+                    fill
+                    className="object-cover group-hover:opacity-75 transition-opacity"
+                    sizes="64px"
+                  />
+                </div>
                 <div>
                   <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
                     Learn Spanish: Tips and Tricks
@@ -79,11 +100,15 @@ export function SidebarWidgets() {
               </Link>
 
               <Link href="/blog/meet-langua-the-worlds-best-ai-platform-for-language-learning" className="flex gap-3 group bg-card rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-                <img 
-                  src="/generated/hero-spanish-conversation.png" 
-                  alt="Meet Langua, the world's best AI platform for language learning"
-                  className="w-16 h-16 object-cover rounded flex-shrink-0 group-hover:opacity-75 transition-opacity"
-                />
+                <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded">
+                  <Image 
+                    src="/generated/hero-spanish-conversation.png" 
+                    alt="Meet Langua, the world's best AI platform for language learning"
+                    fill
+                    className="object-cover group-hover:opacity-75 transition-opacity"
+                    sizes="64px"
+                  />
+                </div>
                 <div>
                   <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
                     Meet Langua™, the world's best AI platform for language learning
