@@ -56,7 +56,7 @@ export function Header() {
             <Link href="/categories/vocabulary" className="text-foreground/80 hover:text-primary transition-colors">
               Vocabulary
             </Link>
-            <Link href="/vlog" className="text-foreground/80 hover:text-primary transition-colors">
+            <Link href="/categories/vlog" className="text-foreground/80 hover:text-primary transition-colors">
               Vlog
             </Link>
             <Link href="/about" className="text-foreground/80 hover:text-primary transition-colors">
