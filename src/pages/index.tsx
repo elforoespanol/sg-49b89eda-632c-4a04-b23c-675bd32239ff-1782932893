@@ -104,7 +104,7 @@ export default function Home() {
                     key={post.id}
                     postId={post.id}
                     title={post.title}
-                    excerpt={post.excerpt || post.content.substring(0, 200) + "..."}
+                    excerpt={post.excerpt || (post.content ? post.content.substring(0, 200) + "..." : "")}
                     category={post.categories?.name || "Uncategorized"}
                     image={post.featured_image || "/generated/hero-spanish-conversation.png"}
                     date={post.published_at ? new Date(post.published_at).toLocaleDateString() : new Date(post.created_at).toLocaleDateString()}
