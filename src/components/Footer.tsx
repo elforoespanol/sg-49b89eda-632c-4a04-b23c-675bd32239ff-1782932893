@@ -51,7 +51,7 @@ export function Footer() {
         {/* Centered bottom section with copyright and Network widget */}
         <div className="mt-12 pt-8 border-t border-background/20 flex flex-col items-center gap-6">
           <p className="text-sm text-background/60 text-center">
-            © 2024 – {new Date().getFullYear()} letsmasterspanish.com is a proud member of the Academia Español Language Network. All rights reserved.
+            © {new Date().getFullYear()} letsmasterspanish.com is a proud member of the Academia Español Language Network. All rights reserved.
           </p>
 
           {/* Academia del Español Network Widget */}
