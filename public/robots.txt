@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://letsmasterspanish.com/api/sitemap.xml
+Sitemap: https://letsmasterspanish.com/sitemap.xml
