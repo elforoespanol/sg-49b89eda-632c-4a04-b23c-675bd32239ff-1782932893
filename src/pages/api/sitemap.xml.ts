@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   const { data: posts } = await supabase
     .from("blog_posts")
-    .select("slug, updated_at")
+    .select("slug, updated_at, published_at, created_at")
     .eq("status", "published")
     .order("published_at", { ascending: false });
 
@@ -46,7 +46,7 @@ export default async function handler(
       (post) => `
   <url>
     <loc>${SITE_URL}/blog/${post.slug}</loc>
-    <lastmod>${new Date(post.updated_at).toISOString().split("T")[0]}</lastmod>
+    <lastmod>${new Date(post.updated_at || post.published_at || post.created_at || new Date()).toISOString().split("T")[0]}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>`
