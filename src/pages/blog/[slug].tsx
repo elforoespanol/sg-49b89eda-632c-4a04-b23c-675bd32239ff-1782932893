@@ -199,9 +199,9 @@ export default function BlogPostPage() {
             
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
               {post.author_name && (
-                <span className="flex items-center gap-1">
+                <span className="flex items-center gap-1 font-medium text-primary">
                   <User className="h-4 w-4" />
-                  {post.author_name}
+                  Created by {post.author_name}
                 </span>
               )}
               

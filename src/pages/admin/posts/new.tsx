@@ -428,7 +428,7 @@ export default function CreateNewBlogPost() {
                 </div>
 
                 <div>
-                  <Label htmlFor="author">Author *</Label>
+                  <Label htmlFor="author">Created By *</Label>
                   <select
                     id="author"
                     value={formData.author_name}
