@@ -61,7 +61,7 @@ export function ArticleCard({ title, excerpt, category, image, date, slug, postI
                 {authorName && (
                   <span className="text-sm text-muted-foreground flex items-center gap-1">
                     <User className="h-4 w-4" />
-                    {authorName}
+                    Created by {authorName}
                   </span>
                 )}
                 <span className="text-sm text-muted-foreground flex items-center gap-1">
