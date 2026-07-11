@@ -15,12 +15,23 @@ type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
   categories: { name: string; slug: string } | null;
 };
 
+const POPULAR_SLUGS = [
+  "spain-vs-latin-american-spanish",
+  "learn-spanish-learning-at-night-school",
+  "learn-spanish-private-tuition",
+  "learn-spanish-audiobooks-podcasts-youtube",
+  "learn-spanish-tips-and-tricks",
+  "meet-langua-the-worlds-best-ai-platform-for-language-learning",
+];
+
 export default function Home() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [popularPosts, setPopularPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadPosts();
+    loadPopularPosts();
   }, []);
 
   async function loadPosts() {
@@ -31,6 +42,15 @@ export default function Home() {
       console.error("Error loading posts:", error);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function loadPopularPosts() {
+    try {
+      const data = await blogService.getPopularPosts(POPULAR_SLUGS);
+      setPopularPosts(data);
+    } catch (error) {
+      console.error("Error loading popular posts:", error);
     }
   }
 
@@ -118,7 +138,7 @@ export default function Home() {
           </div>
         </main>
 
-        <SidebarWidgets />
+        <SidebarWidgets popularPosts={popularPosts} />
         <Footer />
       </div>
     </>

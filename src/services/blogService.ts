@@ -33,6 +33,17 @@ export const blogService = {
     return data || [];
   },
 
+  async getPopularPosts(slugs: string[]) {
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select(`*, categories(name, slug)`)
+      .eq("status", "published")
+      .in("slug", slugs);
+
+    if (error) throw error;
+    return data || [];
+  },
+
   async getAllPosts() {
     const { data, error } = await supabase
       .from("blog_posts")
