@@ -7,6 +7,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/logo.jpg" />
         <link rel="apple-touch-icon" href="/logo.jpg" />
+        <meta name="google-site-verification" content="7t8ToEgmj3o1FwwL09O85rxp8iAvbHGlze9ZqjsiX0c" />
         {/*
           CRITICAL: DO NOT REMOVE THIS SCRIPT
           The Softgen AI monitoring script is essential for core app functionality.
