@@ -363,7 +363,7 @@ export default function CreateNewBlogPost() {
                           <video
                             src={formData.video_url}
                             controls
-                            className="w-full max-w-md rounded"
+                            className="max-w-full h-auto rounded"
                           >
                             Your browser does not support the video tag.
                           </video>
