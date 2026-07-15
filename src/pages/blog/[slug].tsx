@@ -258,7 +258,7 @@ export default function BlogPostPage() {
                 <video
                   src={post.video_url}
                   controls
-                  className="max-w-full h-auto mx-auto rounded-lg"
+                  className="max-w-full max-h-[70vh] h-auto mx-auto rounded-lg"
                   preload="metadata"
                 >
                   Your browser does not support the video tag.
