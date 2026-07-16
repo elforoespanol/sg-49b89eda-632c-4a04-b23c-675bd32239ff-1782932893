@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { LanguageSwitcher } from "@/components/LanguageSwitch";
 
 export function Header() {
   const router = useRouter();
@@ -66,6 +67,8 @@ export function Header() {
               About
             </Link>
           </nav>
+
+          <LanguageSwitcher />
         </div>
       </div>
     </header>
