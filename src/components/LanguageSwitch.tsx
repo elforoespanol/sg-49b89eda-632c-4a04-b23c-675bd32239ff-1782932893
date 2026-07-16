@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Languages } from "lucide-react";
 
 export function LanguageSwitcher() {
@@ -8,31 +8,6 @@ export function LanguageSwitcher() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Load Google Translate script
-    const addScript = () => {
-      if (document.getElementById("google-translate-script")) return;
-      const script = document.createElement("script");
-      script.id = "google-translate-script";
-      script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateInit";
-      document.body.appendChild(script);
-    };
-
-    // Initialize Google Translate
-    (window as any).googleTranslateInit = () => {
-      if (!(window as any).google) return;
-      new (window as any).google.translate.TranslateElement(
-        {
-          pageLanguage: "en",
-          includedLanguages: "en,es,fr,de,pt,it",
-          autoDisplay: false,
-        },
-        "google_translate_element"
-      );
-    };
-
-    addScript();
-
-    // Close dropdown when clicking outside
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsOpen(false);
@@ -43,11 +18,25 @@ export function LanguageSwitcher() {
   }, []);
 
   const changeLanguage = (lang: string) => {
-    const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
-    if (select) {
+    const applyTranslation = () => {
+      const select = document.querySelector(".goog-te-combo") as HTMLSelectElement | null;
+      if (!select) return false;
       select.value = lang;
       select.dispatchEvent(new Event("change"));
+      return true;
+    };
+
+    // Apply immediately if the widget is ready; otherwise retry briefly
+    if (!applyTranslation()) {
+      let attempts = 0;
+      const interval = setInterval(() => {
+        attempts++;
+        if (applyTranslation() || attempts > 30) {
+          clearInterval(interval);
+        }
+      }, 100);
     }
+
     setIsOpen(false);
   };
 
@@ -85,9 +74,6 @@ export function LanguageSwitcher() {
           ))}
         </div>
       )}
-
-      {/* Hidden Google Translate element */}
-      <div id="google_translate_element" className="hidden" />
     </div>
   );
 }
