@@ -18,7 +18,7 @@ Bing audit reports that the homepage, legal pages, category pages, and the Langu
 - [x] Lengthen meta description on terms-of-business.tsx
 - [x] Update category page template to generate richer descriptions
 - [x] Update Langua blog post meta_description in Supabase
-- [ ] Run check_for_errors
+- [x] Run check_for_errors
 
 ## Acceptance
 - All listed pages have meta descriptions between 120–160 characters.
