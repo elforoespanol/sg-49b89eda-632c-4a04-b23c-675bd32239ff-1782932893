@@ -99,7 +99,7 @@ export default function CategoryPage() {
     <>
       <SEO 
         title={`${category.name} - Let's Master Spanish`}
-        description={`Browse all articles in the ${category.name} category`}
+        description={`Explore all ${category.name.toLowerCase()} articles on Let's Master Spanish. Browse practical lessons, tips, and resources to accelerate your Spanish learning journey.`}
         canonical={`/categories/${category.slug}`}
       />
       

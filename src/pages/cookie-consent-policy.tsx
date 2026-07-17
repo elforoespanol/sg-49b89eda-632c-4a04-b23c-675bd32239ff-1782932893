@@ -10,7 +10,7 @@ export default function CookieConsentPolicyPage() {
     <>
       <SEO
         title="Cookie & Consent Policy - Let's Master Spanish"
-        description="Cookie and consent policy for letsmasterspanish.com"
+        description="Learn how letsmasterspanish.com uses cookies and tracking technologies, what data we collect, and how you can manage or withdraw your consent at any time."
       />
 
       <div className="min-h-screen flex flex-col bg-background">

@@ -10,7 +10,7 @@ export default function TermsOfBusinessPage() {
     <>
       <SEO
         title="Terms of Business - Let's Master Spanish"
-        description="Terms of business and legal information for letsmasterspanish.com"
+        description="Review the terms of business for letsmasterspanish.com, covering editorial use, copyright, user communications, and the legal framework of our publication."
       />
 
       <div className="min-h-screen flex flex-col bg-background">
