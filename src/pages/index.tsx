@@ -85,7 +85,7 @@ export default function Home() {
     <>
       <SEO 
         title="Let's Master Spanish - Learn Spanish with Proven Strategies"
-        description="Discover proven strategies, high-quality lessons, and practical tips to take your Spanish from beginner to fluent. Join our community of adult Spanish learners today."
+        description="Master Spanish faster with expert strategies, grammar guides, vocabulary lessons, and cultural tips. Join thousands of adult learners building real confidence today."
         canonical="/"
       />
       

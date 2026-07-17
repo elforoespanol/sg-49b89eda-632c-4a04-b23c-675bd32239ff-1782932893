@@ -10,7 +10,7 @@ export default function DisclosurePolicyPage() {
     <>
       <SEO
         title="Digital Disclosure Policy - Let's Master Spanish"
-        description="Read our disclosure policy for letsmasterspanish.com, including affiliate relationships, internal network affiliations, and our commitment to editorial transparency."
+        description="Read the full disclosure policy for Let's Master Spanish. Learn about affiliate links, our internal language network, and how we maintain complete editorial transparency."
       />
 
       <div className="min-h-screen flex flex-col bg-background">
