@@ -71,7 +71,7 @@ export default function AboutPage() {
                 beginner to fluent Spanish speaker.
               </p>
               <p className="text-foreground/80 leading-relaxed">
-                We're proud to be part of the <strong>Academia Español Language Network</strong>, 
+                We're proud to be part of the <strong>Academia Del Español Language Network</strong>, 
                 delivering continuous, real-time linguistic immersion to complement your path to fluency.
               </p>
             </div>
