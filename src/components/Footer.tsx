@@ -51,7 +51,7 @@ export function Footer() {
         {/* Centered bottom section with copyright and Network widget */}
         <div className="mt-12 pt-8 border-t border-background/20 flex flex-col items-center gap-6">
           <p className="text-sm text-background/60 text-center">
-            © {new Date().getFullYear()} letsmasterspanish.com is a proud member of the Academia Del Español Language Network. All rights reserved.
+            © {new Date().getFullYear()} letsmasterspanish.com is a proud member of the Academia Del Español Digital Language Network. All rights reserved.
           </p>
 
           {/* Academia del Español Network Widget */}
@@ -63,7 +63,7 @@ export function Footer() {
               Let's Master Spanish
             </h4>
             <p className="text-[13px] leading-relaxed text-[#4a5568] mb-4 mt-0">
-              This publication operates as a proud, free media division of the <strong className="text-[#1e3a8a]">Academia del Español Language Network</strong>. We deliver continuous, real-time linguistic immersion to complement your path to fluency.
+              This publication operates as a proud, free media division of the <strong className="text-[#1e3a8a]">Academia del Español Digital Language Network</strong>. We deliver continuous, real-time linguistic immersion to complement your path to fluency.
             </p>
             <a 
               href="https://academiadelespanol.com" 

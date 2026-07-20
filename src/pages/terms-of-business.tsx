@@ -42,7 +42,7 @@ export default function TermsOfBusinessPage() {
                 1. Network Identity
               </h2>
               <p className="text-foreground/80 leading-relaxed">
-                The digital publication letsmasterspanish.com operates strictly as a free media division, content channel, and digital product of the Academia del Español Language Network.
+                The digital publication letsmasterspanish.com operates strictly as a free media division, content channel, and digital product of the Academia del Español Digital Language Network.
               </p>
             </section>
 
@@ -60,7 +60,7 @@ export default function TermsOfBusinessPage() {
                 3. Copyright & Re-Posting Limitations
               </h2>
               <p className="text-foreground/80 leading-relaxed">
-                All original editorial articles, graphics, and custom cultural explanations are copyrighted assets of the Academia del Español Language Network. Short snippets may be shared on social media or language forums provided a direct, clean hyperlink attribute is pointed back to the original source article on letsmasterspanish.com. Complete scraping or wholesale republication of articles is strictly forbidden.
+                All original editorial articles, graphics, and custom cultural explanations are copyrighted assets of the Academia del Español Digital Language Network. Short snippets may be shared on social media or language forums provided a direct, clean hyperlink attribute is pointed back to the original source article on letsmasterspanish.com. Complete scraping or wholesale republication of articles is strictly forbidden.
               </p>
             </section>
 

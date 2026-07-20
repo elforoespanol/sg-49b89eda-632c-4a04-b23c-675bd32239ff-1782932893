@@ -31,7 +31,7 @@ export default function DisclosurePolicyPage() {
               Digital Disclosure Policy
             </h1>
             <p className="text-muted-foreground mb-1">Platform: letsmasterspanish.com</p>
-            <p className="text-muted-foreground mb-1">Network Identity: Part of the Academia del Español Language Network</p>
+            <p className="text-muted-foreground mb-1">Network Identity: Part of the Academia del Español Digital Language Network</p>
             <p className="text-lg text-muted-foreground">Last Updated: May 2026</p>
           </div>
 
@@ -51,7 +51,7 @@ export default function DisclosurePolicyPage() {
                 2. Internal Network Affiliation Disclosure
               </h2>
               <p className="text-foreground/80 leading-relaxed mb-4">
-                This blog is a proud digital property and informational media division of the Academia del Español Language Network.
+                This blog is a proud digital property and informational media division of the Academia del Español Digital Language Network.
               </p>
               <p className="text-foreground/80 leading-relaxed">
                 Throughout this site, you will see recommendations, links, and banners highlighting our structured Spanish curriculum, Learn Spanish Like I Did (learnspanishlikeidid.com). Because both platforms belong to the same overarching language ecosystem, we have a direct interest in promoting our own curriculum. We feature these links because we genuinely believe our course provides the absolute best step-by-step roadmap to complement the free lessons found on this blog.

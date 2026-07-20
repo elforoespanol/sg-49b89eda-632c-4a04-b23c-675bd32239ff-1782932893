@@ -45,7 +45,7 @@ export default function PrivacyGDPRPage() {
                 1. Introduction and Data Controller
               </h2>
               <p className="text-foreground/80 leading-relaxed mb-4">
-                Welcome to the privacy notice for letsmasterspanish.com. This digital publication operates strictly as a media division, content channel, and digital product of the Academia del Español Language Network.
+                Welcome to the privacy notice for letsmasterspanish.com. This digital publication operates strictly as a media division, content channel, and digital product of the Academia del Español Digital Language Network.
               </p>
               <p className="text-foreground/80 leading-relaxed mb-4">
                 For the purposes of the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018, the central administration team of Academia del Español acts as the primary Data Controller. We treat your reader privacy with the highest level of care and respect.
