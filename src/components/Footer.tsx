@@ -50,9 +50,17 @@ export function Footer() {
 
         {/* Centered bottom section with copyright and Network widget */}
         <div className="mt-12 pt-8 border-t border-background/20 flex flex-col items-center gap-6">
-          <p className="text-sm text-background/60 text-center">
-            © {new Date().getFullYear()} letsmasterspanish.com is a proud member of the Academia Del Español Digital Language Network. All rights reserved.
-          </p>
+          <div className="text-sm text-background/60 text-center space-y-1">
+            <p>
+              © 2026 LetsMasterSpanish.com — part of the AcademiaDelEspañol Digital Language Network.
+            </p>
+            <p>
+              All original content is licensed under CC‑BY 4.0 International.
+            </p>
+            <p>
+              You are free to share and adapt this material with attribution to AcademiaDelEspañol / LetsMasterSpanish.com.
+            </p>
+          </div>
 
           {/* Academia del Español Network Widget */}
           <div className="bg-[#fcf9f2] border border-[#eef2f6] rounded-2xl p-6 w-full max-w-7xl shadow-md text-left">
