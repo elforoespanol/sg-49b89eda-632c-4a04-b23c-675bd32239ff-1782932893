@@ -22,6 +22,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     { url: "/", changefreq: "daily", priority: "1.0" },
     { url: "/vlog", changefreq: "weekly", priority: "0.8" },
     { url: "/about", changefreq: "monthly", priority: "0.6" },
+    { url: "/books-and-other-tools-to-help-you-learn-spanish-2", changefreq: "monthly", priority: "0.6" },
     { url: "/learn-spanish-dvds-cds-and-more", changefreq: "monthly", priority: "0.6" },
     { url: "/store", changefreq: "weekly", priority: "0.7" },
     { url: "/sitemap", changefreq: "weekly", priority: "0.5" },
