@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import Link from "next/link";
 
 export default function LearnSpanishDVDCdsPage() {
   return (
@@ -73,7 +74,7 @@ export default function LearnSpanishDVDCdsPage() {
           <div className="bg-muted p-6 rounded-2xl border border-border">
             <h3 className="text-xl font-bold text-foreground mb-2 font-heading">Ready to Start Learning?</h3>
             <p className="text-foreground/80">
-              Explore our <a href="/categories/spanish-for-beginners" className="text-primary hover:underline">beginner resources</a> or check out the <a href="/" className="text-primary hover:underline">latest articles</a> on Let's Master Spanish for free lessons, tips, and strategies.
+              Explore our <Link href="/categories/spanish-for-beginners" className="text-primary hover:underline">beginner resources</Link> or check out the <Link href="/" className="text-primary hover:underline">latest articles</Link> on Let's Master Spanish for free lessons, tips, and strategies.
             </p>
           </div>
         </div>

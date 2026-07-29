@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import Link from "next/link";
 import { ShoppingBag, BookOpen, Headphones, Disc, ArrowRight } from "lucide-react";
 
 export default function StorePage() {
@@ -83,12 +84,12 @@ export default function StorePage() {
             <p className="text-foreground/80 mb-6 max-w-xl mx-auto">
               Not ready to purchase? Explore hundreds of free articles, grammar guides, and vocabulary lessons on our blog.
             </p>
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
             >
               Browse Free Content <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </main>
