@@ -71,7 +71,7 @@ export function Footer() {
               Let's Master Spanish
             </h4>
             <p className="text-[13px] leading-relaxed text-[#4a5568] mb-4 mt-0">
-              This publication operates as a proud, free media division of the <strong className="text-[#1e3a8a]">Academia del Español Digital Language Network</strong>. We deliver continuous, real-time linguistic immersion to complement your path to fluency.
+              This publication operates as a proud, free media division of the <strong className="text-[#1e3a8a]">Academia del Español Digital Language Learning Network</strong>. We deliver continuous, real-time linguistic immersion to complement your path to fluency.
             </p>
             <a 
               href="https://academiadelespanol.com" 
