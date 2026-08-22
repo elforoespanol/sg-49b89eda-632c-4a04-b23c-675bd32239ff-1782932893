@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Search } from "lucide-react";
+import { Search, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitch";
 
 export function Header() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
+  const isHomePage = router.pathname === "/";
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -37,6 +39,16 @@ export function Header() {
       {/* Bottom row: Logo + Navigation */}
       <div className="bg-background">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          {/* Back to Home Link (shown on non-home pages) */}
+          {!isHomePage && (
+            <Link href="/" className="mr-4">
+              <Button variant="ghost" className="gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Home
+              </Button>
+            </Link>
+          )}
+
           <Link href="/" className="flex items-center gap-4 group">
             <img src="/logo.jpg" alt="Let's Master Spanish Logo" className="h-32 w-auto" />
             <span className="text-2xl font-bold text-foreground font-heading">
