@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { SEO } from "@/components/SEO";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { blogService } from "@/services/blogService";
-import { Search as SearchIcon } from "lucide-react";
+import { Search as SearchIcon, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import type { Database } from "@/integrations/supabase/types";
 
 type BlogPost = Database["public"]["Tables"]["blog_posts"]["Row"] & {
@@ -49,6 +51,16 @@ export default function SearchPage() {
 
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
+        
+        {/* Back to Home Link */}
+        <div className="max-w-7xl mx-auto px-4 pt-8 w-full">
+          <Link href="/">
+            <Button variant="ghost" className="mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
 
         <main className="flex-1 max-w-7xl mx-auto px-4 py-16 w-full">
           {/* Search Header */}

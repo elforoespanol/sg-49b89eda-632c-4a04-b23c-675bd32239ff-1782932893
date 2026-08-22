@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { blogService } from "@/services/blogService";
 import { authService } from "@/services/authService";
-import { Calendar, Eye, User, Edit } from "lucide-react";
+import { Calendar, Eye, User, Edit, ArrowLeft } from "lucide-react";
 import type { Database } from "@/integrations/supabase/types";
 import Head from "next/head";
 
@@ -166,6 +166,16 @@ export default function BlogPostPage() {
       
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
+        
+        {/* Back to Home Link */}
+        <div className="max-w-4xl mx-auto px-4 pt-8 w-full">
+          <Link href="/">
+            <Button variant="ghost" className="mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
         
         <article className="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
           {/* Admin Edit Button */}
