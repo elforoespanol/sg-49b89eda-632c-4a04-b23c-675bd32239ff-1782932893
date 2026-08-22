@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Search, ArrowLeft } from "lucide-react";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitch";
 
 export function Header() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const isHomePage = router.pathname === "/";
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -20,20 +18,6 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
-      {/* Back to Home Button - Show on all non-home pages */}
-      {!isHomePage && (
-        <div className="bg-muted border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 py-2">
-            <Link href="/">
-              <Button variant="ghost" className="gap-2 text-primary hover:text-primary/80">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Home
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
-
       {/* Top row: Search Bar */}
       <div className="bg-muted">
         <form onSubmit={handleSearch} className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center">
