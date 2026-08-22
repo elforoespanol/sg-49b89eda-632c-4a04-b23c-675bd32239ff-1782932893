@@ -1,6 +1,9 @@
 import { SEO } from "@/components/SEO";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import Link from "next/link";
-import { ShoppingBag, BookOpen, Headphones, Disc, ArrowRight } from "lucide-react";
+import { ShoppingBag, BookOpen, Headphones, Disc, ArrowRight, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function StorePage() {
   const products = [
@@ -42,8 +45,20 @@ export default function StorePage() {
         canonical="/store"
       />
 
-      <main className="min-h-screen bg-background py-16 px-4">
-        <div className="max-w-5xl mx-auto">
+      <div className="min-h-screen flex flex-col bg-background">
+        <Header />
+
+        {/* Back to Home Link */}
+        <div className="max-w-5xl mx-auto px-4 pt-8 w-full">
+          <Link href="/">
+            <Button variant="ghost" className="mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
+
+        <main className="flex-1 max-w-5xl mx-auto px-4 py-12 w-full">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-heading">
               Spanish Learning Store
@@ -91,8 +106,10 @@ export default function StorePage() {
               Browse Free Content <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </div>
-      </main>
+        </main>
+
+        <Footer />
+      </div>
     </>
   );
 }

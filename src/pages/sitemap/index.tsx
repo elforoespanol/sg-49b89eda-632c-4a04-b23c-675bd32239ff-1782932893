@@ -1,5 +1,9 @@
 import { SEO } from "@/components/SEO";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface SitemapPageProps {
@@ -28,8 +32,20 @@ export default function SitemapPage({ posts, categories }: SitemapPageProps) {
         canonical="/sitemap/"
       />
 
-      <main className="min-h-screen bg-background py-16 px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen flex flex-col bg-background">
+        <Header />
+
+        {/* Back to Home Link */}
+        <div className="max-w-4xl mx-auto px-4 pt-8 w-full">
+          <Link href="/">
+            <Button variant="ghost" className="mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
+
+        <main className="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8 font-heading">
             Sitemap
           </h1>
@@ -87,8 +103,10 @@ export default function SitemapPage({ posts, categories }: SitemapPageProps) {
               ))}
             </ul>
           </section>
-        </div>
-      </main>
+        </main>
+
+        <Footer />
+      </div>
     </>
   );
 }
