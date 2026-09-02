@@ -1,9 +1,9 @@
 User-agent: *
 Allow: /
 Allow: /api/sitemap.xml
-Allow: /api/feed/blog.xml
-Allow: /api/feed/vlog.xml
+Allow: /api/feed/
 Disallow: /admin/
-Disallow: /api/
+Disallow: /api/r2/
+Disallow: /api/hello.ts
 
 Sitemap: https://letsmasterspanish.com/sitemap.xml
