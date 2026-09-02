@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Allow: /api/sitemap.xml
+Allow: /api/feed/blog.xml
+Allow: /api/feed/vlog.xml
 Disallow: /admin/
 Disallow: /api/
 
