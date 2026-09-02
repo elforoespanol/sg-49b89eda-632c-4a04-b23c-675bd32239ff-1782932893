@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Search } from "lucide-react";
+import { Search, Rss } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitch";
@@ -18,20 +18,44 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
-      {/* Top row: Search Bar */}
+      {/* Top row: Search Bar + RSS Links */}
       <div className="bg-muted">
-        <form onSubmit={handleSearch} className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center">
-          <div className="relative w-full max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
-            <Input 
-              type="search" 
-              placeholder="Search Posts...." 
-              className="pl-9 bg-background border-border w-full"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+          <form onSubmit={handleSearch} className="flex-1 flex items-center justify-center">
+            <div className="relative w-full max-w-md">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
+              <Input 
+                type="search" 
+                placeholder="Search Posts...." 
+                className="pl-9 bg-background border-border w-full"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </form>
+          
+          {/* RSS Feed Links */}
+          <div className="hidden sm:flex items-center gap-2">
+            <a 
+              href="/api/feed/blog.xml" 
+              className="p-2 text-foreground/60 hover:text-primary transition-colors"
+              title="Subscribe to Blog RSS"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Rss className="h-4 w-4" />
+            </a>
+            <a 
+              href="/api/feed/vlog.xml" 
+              className="p-2 text-foreground/60 hover:text-primary transition-colors"
+              title="Subscribe to Vlog RSS"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Rss className="h-4 w-4" />
+            </a>
           </div>
-        </form>
+        </div>
       </div>
 
       {/* Bottom row: Logo + Navigation */}

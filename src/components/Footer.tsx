@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Rss } from "lucide-react";
 
 export function Footer() {
   return (
@@ -12,6 +13,31 @@ export function Footer() {
               Let's Master Spanish is dedicated to empowering adult learners with proven strategies, 
               high-quality lessons, and a supportive community to achieve Spanish fluency.
             </p>
+          </div>
+
+          {/* Subscribe to RSS Feeds */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold font-heading mb-4">Subscribe</h3>
+            <nav className="flex flex-col gap-3">
+              <a 
+                href="/api/feed/blog.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-background/80 hover:text-background transition-colors flex items-center gap-2"
+              >
+                <Rss className="h-4 w-4" />
+                Blog RSS Feed
+              </a>
+              <a 
+                href="/api/feed/vlog.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-background/80 hover:text-background transition-colors flex items-center gap-2"
+              >
+                <Rss className="h-4 w-4" />
+                Vlog RSS Feed
+              </a>
+            </nav>
           </div>
 
           {/* Legal */}
@@ -31,20 +57,6 @@ export function Footer() {
                 Cookie & Consent Policy
               </Link>
             </nav>
-          </div>
-
-          {/* Contact Us */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold font-heading mb-4">Contact Us</h3>
-            <p className="text-background/80 mb-6">
-              Have questions or feedback? We'd love to hear from you!
-            </p>
-            <a 
-              href="mailto:admin@letsmasterspanish.com"
-              className="inline-block text-background/80 hover:text-primary transition-colors underline"
-            >
-              admin@letsmasterspanish.com
-            </a>
           </div>
         </div>
 

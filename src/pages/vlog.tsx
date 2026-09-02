@@ -86,7 +86,7 @@ export default function VlogPage() {
               </p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
               {posts.map((post) => (
                 <ArticleCard
                   key={post.id}
@@ -103,6 +103,42 @@ export default function VlogPage() {
               ))}
             </div>
           )}
+
+          {/* Subscribe Section */}
+          <div className="bg-muted rounded-lg p-8 space-y-4">
+            <h3 className="text-xl font-bold text-foreground font-heading">
+              Stay Updated with New Videos
+            </h3>
+            <p className="text-foreground/80 leading-relaxed">
+              Subscribe to our Vlog RSS feed to get new video lessons delivered automatically to your favorite reader.
+            </p>
+            <div className="flex gap-3">
+              <a 
+                href="/api/feed/vlog.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-background rounded-lg hover:bg-primary/90 transition-colors font-medium"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="6.18" cy="17.82" r="2.18" />
+                  <path d="M4 4.44v2.46c5.523 0 10 4.477 10 10s-4.477 10-10 10H4v2.44h.44C15.97 29.32 24 21.35 24 11.22S15.97 0 6.44 0H4zm0-2H2v5.66h2V2.44z" />
+                </svg>
+                Subscribe Vlog RSS
+              </a>
+              <a 
+                href="/api/feed/blog.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-background rounded-lg hover:bg-secondary/90 transition-colors font-medium"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="6.18" cy="17.82" r="2.18" />
+                  <path d="M4 4.44v2.46c5.523 0 10 4.477 10 10s-4.477 10-10 10H4v2.44h.44C15.97 29.32 24 21.35 24 11.22S15.97 0 6.44 0H4zm0-2H2v5.66h2V2.44z" />
+                </svg>
+                Subscribe Blog RSS
+              </a>
+            </div>
+          </div>
         </main>
 
         <Footer />

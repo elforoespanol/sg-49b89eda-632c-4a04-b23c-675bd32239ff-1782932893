@@ -31,9 +31,16 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     { url: "/cookie-consent-policy", changefreq: "yearly", priority: "0.3" },
   ];
 
+  const feedPages = [
+    { url: "/api/feed/blog.xml", changefreq: "daily", priority: "0.9" },
+    { url: "/api/feed/vlog.xml", changefreq: "weekly", priority: "0.8" },
+  ];
+
+  const allStaticPages = [...staticPages, ...feedPages];
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${staticPages
+  ${allStaticPages
     .map(
       (page) => `
   <url>
