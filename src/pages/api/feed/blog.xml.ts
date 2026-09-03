@@ -12,7 +12,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (error) throw error;
 
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://letsmasterspanish.com";
+    const protocol = req.headers["x-forwarded-proto"] || "https";
+    const host = req.headers.host || "letsmasterspanish.com";
+    const baseUrl = `${protocol}://${host}`;
     
     const rssItems = posts
       .map((post: any) => {
