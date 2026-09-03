@@ -8,6 +8,11 @@ export default function Document() {
         <link rel="icon" href="/logo.jpg" />
         <link rel="apple-touch-icon" href="/logo.jpg" />
         <meta name="google-site-verification" content="7t8ToEgmj3o1FwwL09O85rxp8iAvbHGlze9ZqjsiX0c" />
+        
+        {/* RSS Autodiscovery */}
+        <link rel="alternate" type="application/rss+xml" title="Let's Master Spanish - Blog" href="https://letsmasterspanish.com/api/feed/blog.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Let's Master Spanish - Vlog" href="https://letsmasterspanish.com/api/feed/vlog.xml" />
+        
         {/*
           CRITICAL: DO NOT REMOVE THIS SCRIPT
           The Softgen AI monitoring script is essential for core app functionality.
