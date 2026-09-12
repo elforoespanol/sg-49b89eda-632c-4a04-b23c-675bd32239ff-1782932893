@@ -36,6 +36,7 @@ export function SEOElements({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="icon" href="/favicon.ico" />
+      <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
@@ -78,6 +79,7 @@ export function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="icon" href="/logo.jpg" />
+      <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
