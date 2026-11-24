@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { blogService } from "@/services/blogService";
 import { authService } from "@/services/authService";
 import { Calendar, Eye, User, Edit, ArrowLeft } from "lucide-react";
+import { MarkdownContent } from "@/components/MarkdownContent";
 import type { Database } from "@/integrations/supabase/types";
 import Head from "next/head";
 
@@ -278,11 +279,7 @@ export default function BlogPostPage() {
           )}
 
           {/* Post Content */}
-          <div className="prose prose-lg max-w-none">
-            <div className="whitespace-pre-wrap text-foreground/90 leading-relaxed">
-              {post.content}
-            </div>
-          </div>
+          <MarkdownContent content={post.content} />
 
           {/* Tags */}
           {post.tags && post.tags.length > 0 && (

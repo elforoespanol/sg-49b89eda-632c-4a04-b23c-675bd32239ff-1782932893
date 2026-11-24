@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { blogService } from "@/services/blogService";
 import { ArrowLeft, Upload, Save } from "lucide-react";
 import Link from "next/link";
+import { RichTextEditor } from "@/components/RichTextEditor";
 import type { Database } from "@/integrations/supabase/types";
 
 type Category = Database["public"]["Tables"]["categories"]["Row"];
@@ -263,20 +264,14 @@ export default function CreateNewBlogPost() {
                   Content
                 </h2>
                 
-                <div>
-                  <Label htmlFor="content">Post Content *</Label>
-                  <Textarea
-                    id="content"
-                    value={formData.content}
-                    onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    placeholder="Write your blog post content here..."
-                    rows={15}
-                    required
-                  />
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Tip: Use markdown formatting for better structure
-                  </p>
-                </div>
+                <RichTextEditor
+                  value={formData.content}
+                  onChange={(value) => setFormData({ ...formData, content: value })}
+                  label="Post Content"
+                  placeholder="Write your blog post content here..."
+                  required
+                  rows={15}
+                />
               </div>
 
               {/* Featured Image Section */}

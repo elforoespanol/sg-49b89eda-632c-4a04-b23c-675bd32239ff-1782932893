@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Bold, Italic, Heading2, Link, Image, Eye, Code, List, ListOrdered } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface RichTextEditorProps {
   value: string;
@@ -146,15 +148,15 @@ export function RichTextEditor({
           />
         </>
       ) : (
-        <div className="border border-input rounded-lg p-4 min-h-[300px] bg-background overflow-auto">
+        <div className="border border-input rounded-lg p-6 min-h-[300px] bg-background overflow-auto">
           {value ? (
             <div className="prose prose-sm max-w-none">
-              <p className="text-muted-foreground text-sm mb-2 border-b pb-2">
-                Preview mode — formatting will appear on the live site
+              <p className="text-muted-foreground text-xs mb-4 border-b pb-2">
+                Preview — this is how your post will look on the live site
               </p>
-              <pre className="whitespace-pre-wrap text-foreground/90 leading-relaxed font-sans bg-transparent p-0">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {value}
-              </pre>
+              </ReactMarkdown>
             </div>
           ) : (
             <p className="text-muted-foreground italic">Nothing to preview yet...</p>
