@@ -2,9 +2,10 @@ import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Bold, Italic, Heading2, Link, Image, Eye, Code, List, ListOrdered } from "lucide-react";
+import { Bold, Italic, Heading2, Link, Image, Eye, Code, List, ListOrdered, Loader2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { blogService } from "@/services/blogService";
 
 interface RichTextEditorProps {
   value: string;
@@ -24,7 +25,9 @@ export function RichTextEditor({
   rows = 15,
 }: RichTextEditorProps) {
   const [showPreview, setShowPreview] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const wrapSelection = useCallback(
     (before: string, after: string = before, defaultText: string = "") => {
@@ -73,27 +76,71 @@ export function RichTextEditor({
     [value, onChange]
   );
 
+  const handleImageUpload = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+
+      setUploading(true);
+      try {
+        const imageUrl = await blogService.uploadImage(file, "blog-posts");
+        insertAtCursor(`\n![${file.name.replace(/\.[^/.]+$/, "")}](${imageUrl})\n`);
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        alert("Failed to upload image. Please try again.");
+      } finally {
+        setUploading(false);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      }
+    },
+    [insertAtCursor]
+  );
+
   const toolbarItems = [
     { icon: Bold, label: "Bold", action: () => wrapSelection("**", "**", "bold text") },
     { icon: Italic, label: "Italic", action: () => wrapSelection("*", "*", "italic text") },
-    { icon: Heading2, label: "Heading", action: () => {
-      const textarea = textareaRef.current;
-      if (!textarea) return;
-      const start = textarea.selectionStart;
-      const isAtLineStart = start === 0 || value[start - 1] === "\n";
-      const prefix = isAtLineStart ? "## " : "\n## ";
-      insertAtCursor(prefix + "Heading\n");
-    }},
+    {
+      icon: Heading2,
+      label: "Heading",
+      action: () => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+        const start = textarea.selectionStart;
+        const isAtLineStart = start === 0 || value[start - 1] === "\n";
+        const prefix = isAtLineStart ? "## " : "\n## ";
+        insertAtCursor(prefix + "Heading\n");
+      },
+    },
     { icon: Link, label: "Link", action: () => wrapSelection("[", "](https://example.com)", "link text") },
-    { icon: Image, label: "Image", action: () => insertAtCursor("\n![alt text](https://your-image-url.jpg)\n") },
+    {
+      icon: Image,
+      label: "Image",
+      action: () => fileInputRef.current?.click(),
+      isUpload: true,
+      loading: uploading,
+    },
     { icon: List, label: "Bullet List", action: () => insertAtCursor("\n- Item 1\n- Item 2\n- Item 3\n") },
     { icon: ListOrdered, label: "Numbered List", action: () => insertAtCursor("\n1. Item 1\n2. Item 2\n3. Item 3\n") },
   ];
 
   return (
     <div className="space-y-2">
+      {/* Hidden file input for image uploads */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        className="hidden"
+      />
+
       <div className="flex items-center justify-between">
-        <Label htmlFor="rich-editor">{label}{required && " *"}</Label>
+        <Label htmlFor="rich-editor">
+          {label}
+          {required && " *"}
+        </Label>
         <div className="flex items-center gap-1">
           <Button
             type="button"
@@ -129,9 +176,14 @@ export function RichTextEditor({
                 size="sm"
                 onClick={item.action}
                 title={item.label}
+                disabled={item.loading}
                 className="h-8 w-8 p-0 hover:bg-background"
               >
-                <item.icon className="h-4 w-4" />
+                {item.loading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <item.icon className="h-4 w-4" />
+                )}
                 <span className="sr-only">{item.label}</span>
               </Button>
             ))}
@@ -154,9 +206,7 @@ export function RichTextEditor({
               <p className="text-muted-foreground text-xs mb-4 border-b pb-2">
                 Preview — this is how your post will look on the live site
               </p>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {value}
-              </ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{value}</ReactMarkdown>
             </div>
           ) : (
             <p className="text-muted-foreground italic">Nothing to preview yet...</p>
@@ -165,7 +215,7 @@ export function RichTextEditor({
       )}
 
       <p className="text-xs text-muted-foreground">
-        Tip: Select text and click a button, or click a button to insert at cursor.
+        Tip: Select text and click a button, or click a button to insert at cursor. Click the Image button to upload from your computer.
       </p>
     </div>
   );
