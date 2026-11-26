@@ -87,6 +87,9 @@ export function Header() {
             <Link href="/categories/vlog" className="text-foreground/80 hover:text-primary transition-colors text-sm">
               Vlog
             </Link>
+            <Link href="/el-metodo-saberanta/" className="text-foreground/80 hover:text-primary transition-colors text-sm">
+              Our Method
+            </Link>
             <Link href="/about" className="text-foreground/80 hover:text-primary transition-colors text-sm">
               About
             </Link>

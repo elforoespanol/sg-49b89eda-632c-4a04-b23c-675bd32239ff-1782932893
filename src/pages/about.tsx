@@ -194,6 +194,24 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* The Saberanta Approach */}
+          <section className="max-w-4xl mx-auto px-4 py-16">
+            <h2 className="text-3xl font-bold text-foreground font-heading mb-6">
+              The Saberanta Approach
+            </h2>
+            <p className="text-foreground/80 leading-relaxed mb-4">
+              Our educational philosophy is supported by <strong>El Método Saberanta</strong>, the Spanish teaching methodology developed by Academia del Español.
+            </p>
+            <p className="text-foreground/80 leading-relaxed mb-6">
+              Built around five connected stages — Context, Learn, Apply, Refine and Own — Saberanta emphasises understanding, practical application and the development of independent communication.
+            </p>
+            <Link href="/el-metodo-saberanta/">
+              <Button className="bg-primary hover:bg-primary/90 text-white">
+                Discover El Método Saberanta
+              </Button>
+            </Link>
+          </section>
+
           {/* CTA Section */}
           <section className="bg-foreground py-16">
             <div className="max-w-4xl mx-auto px-4 text-center">

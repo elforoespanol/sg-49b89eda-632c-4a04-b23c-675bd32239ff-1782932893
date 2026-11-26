@@ -44,6 +44,9 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-bold font-heading mb-4">Legal</h3>
             <nav className="flex flex-col gap-3">
+              <Link href="/el-metodo-saberanta/" className="text-background/80 hover:text-background transition-colors">
+                Our Teaching Approach
+              </Link>
               <Link href="/privacy-gdpr" className="text-background/80 hover:text-background transition-colors">
                 Privacy & GDPR Policy
               </Link>
@@ -57,6 +60,9 @@ export function Footer() {
                 Cookie & Consent Policy
               </Link>
             </nav>
+            <p className="text-sm text-background/60 pt-2">
+              El Método Saberanta — developed by Academia del Español.
+            </p>
           </div>
         </div>
 

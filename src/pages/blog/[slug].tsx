@@ -295,6 +295,28 @@ export default function BlogPostPage() {
             </div>
           )}
 
+          {/* Saberanta Reference */}
+          {post.categories && ["spanish-basics", "grammar", "vocabulary", "spanish-learning-tips"].includes(post.categories.slug) && (
+            <div className="mt-12 pt-8 border-t border-border">
+              <div className="bg-[#F5F0E7] rounded-lg p-6 border-l-4 border-l-[#B87557]">
+                <h3 className="text-lg font-bold text-[#173E52] font-heading mb-2">
+                  The Saberanta Approach
+                </h3>
+                <p className="text-foreground/80 leading-relaxed mb-3">
+                  This article forms part of the wider educational philosophy behind <strong>El Método Saberanta</strong>, the Spanish teaching methodology developed by Academia del Español.
+                </p>
+                <p className="text-foreground/80 leading-relaxed mb-4">
+                  Discover how the five-stage approach connects Context, Learn, Apply, Refine and Own.
+                </p>
+                <Link href="/el-metodo-saberanta/">
+                  <Button variant="outline" className="border-[#173E52] text-[#173E52] hover:bg-[#173E52] hover:text-white">
+                    Discover El Método Saberanta
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          )}
+
           {/* Subscribe Section */}
           <div className="mt-12 pt-8 border-t border-border">
             <div className="bg-muted rounded-lg p-8 space-y-4">
