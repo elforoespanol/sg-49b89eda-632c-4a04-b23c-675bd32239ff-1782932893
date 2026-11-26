@@ -61,7 +61,14 @@ export function Footer() {
               </Link>
             </nav>
             <p className="text-sm text-background/60 pt-2">
-              El Método Saberanta — developed by Academia del Español.
+              <a 
+                href="https://academiadelespanol.com/metodo-saberanta/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:underline transition-all"
+              >
+                El Método Saberanta — developed by Academia del Español.
+              </a>
             </p>
           </div>
         </div>
