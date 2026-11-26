@@ -86,16 +86,11 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
             </pre>
           ),
           img: ({ src, alt }) => (
-            <span className="block my-6">
-              <Image
-                src={src || ""}
-                alt={alt || ""}
-                width={800}
-                height={500}
-                className="rounded-lg object-cover w-full"
-                sizes="(max-width: 768px) 100vw, 800px"
-              />
-            </span>
+            <img
+              src={src || ""}
+              alt={alt || ""}
+              className="inline-block max-w-sm w-full md:max-w-xs rounded-lg object-cover my-4 mr-4 align-top"
+            />
           ),
         }}
       >
