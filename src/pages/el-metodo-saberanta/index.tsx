@@ -41,7 +41,7 @@ export default function MetodoSaberantaPage() {
     "@type": "WebPage",
     "name": "El Método Saberanta | A More Thoughtful Way to Learn Spanish",
     "description": "Discover El Método Saberanta, the five-stage Spanish teaching methodology developed by Academia del Español.",
-    "url": "https://letsmasterspanish.com/el-metodo-saberanta",
+    "url": "https://letsmasterspanish.com/el-metodo-saberanta/",
     "publisher": {
       "@type": "Organization",
       "name": "Let's Master Spanish",
@@ -54,7 +54,7 @@ export default function MetodoSaberantaPage() {
       <SEO
         title="El Método Saberanta | A More Thoughtful Way to Learn Spanish"
         description="Discover El Método Saberanta, the five-stage Spanish teaching methodology developed by Academia del Español. Understand, practise and build confidence in Spanish."
-        canonical="/el-metodo-saberanta"
+        canonical="/el-metodo-saberanta/"
       />
 
       <Head>
